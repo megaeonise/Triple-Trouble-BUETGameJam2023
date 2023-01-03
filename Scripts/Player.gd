@@ -15,12 +15,14 @@ signal Left_Dash
 signal Air
 signal Stop
 signal Jump
+signal Interact
 
 #Controls
 func get_input(delta):
 	#Initial Velocity
 	velocity.x = 0
-	if is_on_floor():
+	#Setting Ground state after returning from Air
+	if is_on_floor() and state == states[1]:
 		state = states[0]
 		emit_signal('Ground')
 	if not state in states.slice(2,4):
@@ -49,7 +51,8 @@ func get_input(delta):
 				print('rdash')
 				state = states[2]
 				emit_signal('Right_Dash')
-				velocity.x += speed*2.5
+				velocity.x = 0
+				velocity.x += 2500
 				state = states[0]
 				emit_signal('Ground')
 			#Right Air Dash
@@ -57,11 +60,11 @@ func get_input(delta):
 				print('rudash')
 				state = states[2]
 				emit_signal('Right_Dash')
-				velocity.y = 0
 				velocity.x = 0
-				velocity.x += speed*2.5
+				velocity.x += 2500
 				state = states[1]
 				emit_signal('Air')
+		
 		#Left Dash
 		if Input.is_action_just_pressed("dash") and Input.is_action_pressed('move_left'):
 			#Left Ground Dash
@@ -70,7 +73,8 @@ func get_input(delta):
 				print('ldash')
 				emit_signal('Left_Dash')
 				state = states[2]
-				velocity.x -= speed*2.5
+				velocity.x = 0
+				velocity.x -= 2500
 				state = states[0]
 				emit_signal('Ground')
 			#Left Air Dash
@@ -78,12 +82,14 @@ func get_input(delta):
 				print('ludash')
 				state = states[2]
 				emit_signal('Left_Dash')
-				velocity.y = 0
 				velocity.x = 0
-				velocity.x -= speed*2.5
+				velocity.x -= 2500
 				state = states[1]
 				emit_signal('Air')
-		
+		#Interact
+		if Input.is_action_just_pressed("interact"):
+			emit_signal('Interact')
+	
 	#Gravity
 	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
