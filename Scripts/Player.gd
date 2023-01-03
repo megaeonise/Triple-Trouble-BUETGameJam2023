@@ -1,8 +1,8 @@
 extends KinematicBody2D
 #Variables
-var speed: int = 50
-var jumpspeed: int = -25
-var gravity: int = 50
+var speed: int = 500
+var jumpspeed: int = -250
+var gravity: int = 500
 var velocity = Vector2()
 var states: Array = ['Ground', 'Air', 'Dash', 'Interact', 'Death']
 var state: String = states[0]
@@ -10,10 +10,8 @@ var state: String = states[0]
 signal Ground
 signal Right
 signal Left
-signal Right_GDash
-signal Right_ADash
-signal Left_GDash
-signal Left_ADash
+signal Right_Dash
+signal Left_Dash
 signal Air
 signal Stop
 signal Jump
@@ -50,7 +48,7 @@ func get_input(delta):
 			if state == states[0]:
 				print('rdash')
 				state = states[2]
-				emit_signal('Right_GDash')
+				emit_signal('Right_Dash')
 				velocity.x += speed*2.5
 				state = states[0]
 				emit_signal('Ground')
@@ -58,7 +56,7 @@ func get_input(delta):
 			else:
 				print('rudash')
 				state = states[2]
-				emit_signal('Right_ADash')
+				emit_signal('Right_Dash')
 				velocity.y = 0
 				velocity.x = 0
 				velocity.x += speed*2.5
@@ -68,8 +66,9 @@ func get_input(delta):
 		if Input.is_action_just_pressed("dash") and Input.is_action_pressed('move_left'):
 			#Left Ground Dash
 			if state == states[0]:
+				state = states[2]
 				print('ldash')
-				emit_signal('Light_GDash')
+				emit_signal('Left_Dash')
 				state = states[2]
 				velocity.x -= speed*2.5
 				state = states[0]
@@ -78,7 +77,7 @@ func get_input(delta):
 			else:
 				print('ludash')
 				state = states[2]
-				emit_signal('Left_ADash')
+				emit_signal('Left_Dash')
 				velocity.y = 0
 				velocity.x = 0
 				velocity.x -= speed*2.5
