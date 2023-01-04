@@ -6,6 +6,7 @@ var gravity: int = 500
 var velocity = Vector2()
 var states: Array = ['Ground', 'Air', 'Dash', 'Interact', 'Death']
 var state: String = states[0]
+var finished: bool = false
 #Signals
 signal Ground
 signal Right
@@ -53,8 +54,7 @@ func get_input(delta):
 				emit_signal('Right_Dash')
 				velocity.x = 0
 				velocity.x += 2500
-				state = states[0]
-				emit_signal('Ground')
+
 			#Right Air Dash
 			else:
 				print('rudash')
@@ -62,8 +62,6 @@ func get_input(delta):
 				emit_signal('Right_Dash')
 				velocity.x = 0
 				velocity.x += 2500
-				state = states[1]
-				emit_signal('Air')
 		
 		#Left Dash
 		if Input.is_action_just_pressed("dash") and Input.is_action_pressed('move_left'):
@@ -75,8 +73,6 @@ func get_input(delta):
 				state = states[2]
 				velocity.x = 0
 				velocity.x -= 2500
-				state = states[0]
-				emit_signal('Ground')
 			#Left Air Dash
 			else:
 				print('ludash')
@@ -84,10 +80,10 @@ func get_input(delta):
 				emit_signal('Left_Dash')
 				velocity.x = 0
 				velocity.x -= 2500
-				state = states[1]
-				emit_signal('Air')
 		#Interact
 		if Input.is_action_just_pressed("interact"):
+			finished = false
+			state = states[3]
 			emit_signal('Interact')
 	
 	#Gravity
@@ -97,4 +93,13 @@ func get_input(delta):
 #Driver code
 func _physics_process(delta):
 	get_input(delta)
+	print(finished, state)
 
+
+func _on_AnimatedSprite_animation_finished():
+	if is_on_floor():
+		state = states[0]
+		emit_signal("Ground")
+	else:
+		state = states[1]
+		emit_signal("Air")
