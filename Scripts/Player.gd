@@ -7,6 +7,7 @@ var velocity = Vector2()
 var states: Array = ['Ground', 'Air', 'Dash', 'Interact', 'Death']
 var state: String = states[0]
 var finished: bool = false
+var collision: bool = false
 #Signals
 signal Ground
 signal Right
@@ -17,6 +18,7 @@ signal Air
 signal Stop
 signal Jump
 signal Interact
+signal Collision
 
 #Controls
 func get_input(delta):
@@ -93,7 +95,11 @@ func get_input(delta):
 #Driver code
 func _physics_process(delta):
 	get_input(delta)
-	print(finished, state)
+	for count in get_slide_count():
+		print('lesss goo')
+		collision = get_slide_collision(count)
+		if collision:
+			emit_signal("Collision")
 
 
 func _on_AnimatedSprite_animation_finished():
