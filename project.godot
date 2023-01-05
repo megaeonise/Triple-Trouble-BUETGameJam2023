@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Buet Game Jam 2023"
-run/main_scene="res://Scenes/Main.tscn"
+run/main_scene="res://Scenes/Levels/Main.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/resizable=false
 
 [input]
 

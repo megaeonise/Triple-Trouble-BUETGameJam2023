@@ -32,7 +32,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 16, 16 )
+extents = Vector2( 8, 8 )
 
 [sub_resource type="Curve" id=7]
 min_value = -200.0
@@ -45,11 +45,10 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -4.76837e-07, -4.76837e-07 )
 frames = SubResource( 5 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 6 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

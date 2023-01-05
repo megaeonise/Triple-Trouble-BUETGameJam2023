@@ -4,7 +4,7 @@ extends AnimatedSprite
 onready var _animation = self
 var facing = false
 var air = false
-var finished = false
+var finished = true
 
 #Handling Animation Stopping
 func _on_AnimatedSprite_animation_finished():
