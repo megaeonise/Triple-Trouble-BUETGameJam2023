@@ -32,5 +32,5 @@ position = Vector2( 552, 152 )
 [connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]
 [connection signal="area_entered" from="DarkMatter" to="Player" method="_on_DarkMatter_area_entered"]
 [connection signal="body_entered" from="DarkMatter" to="Player" method="_on_DarkMatter_body_entered"]
-[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]

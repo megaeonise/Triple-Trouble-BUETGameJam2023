@@ -46,39 +46,43 @@ func _on_Player_Interact(breaker):
 	else:
 		if wall_block!=-1:
 			if direction:
-				if wall_block==0:
-					set_cell(local.x-1, local.y, 1)
-				elif wall_block==1:
-					set_cell(local.x-1, local.y, 0)
-				elif wall_block==2:
-					set_cell(local.x-1, local.y, 3)
-				elif wall_block==3:
-					set_cell(local.x-1, local.y, 2)
+				match wall_block:
+					0:
+						set_cell(local.x-1, local.y, 1)
+					1:
+						set_cell(local.x-1, local.y, 0)
+					2:
+						set_cell(local.x-1, local.y, 3)
+					3:
+						set_cell(local.x-1, local.y, 2)
 			else:
-				if wall_block==0:
-					set_cell(local.x+1, local.y, 1)
-				elif wall_block==1:
-					set_cell(local.x+1, local.y, 0)
-				elif wall_block==2:
-					set_cell(local.x+1, local.y, 3)
-				elif wall_block==3:
-					set_cell(local.x+1, local.y, 2)
+				match wall_block:
+					0:
+						set_cell(local.x+1, local.y, 1)
+					1:
+						set_cell(local.x+1, local.y, 0)
+					2:
+						set_cell(local.x+1, local.y, 3)
+					3:
+						set_cell(local.x+1, local.y, 2)
 		elif diag_block!=-1:
 			if direction:
-				if diag_block==0:
-					set_cell(local.x-1, local.y+1, 1)
-				elif diag_block==1:
-					set_cell(local.x-1, local.y+1, 0)
-				elif diag_block==2:
-					set_cell(local.x-1, local.y+1, 3)
-				elif diag_block==3:
-					set_cell(local.x-1, local.y+1, 2)
+				match diag_block:
+					0:
+						set_cell(local.x-1, local.y+1, 1)
+					1:
+						set_cell(local.x-1, local.y+1, 0)
+					2:
+						set_cell(local.x-1, local.y+1, 3)
+					3:
+						set_cell(local.x-1, local.y+1, 2)
 			else:
-				if diag_block==0:
-					set_cell(local.x+1, local.y+1, 1)
-				elif diag_block==1:
-					set_cell(local.x+1, local.y+1, 0)
-				elif diag_block==2:
-					set_cell(local.x+1, local.y+1, 3)
-				elif diag_block==3:
-					set_cell(local.x+1, local.y+1, 2)
+				match diag_block:
+					0:
+						set_cell(local.x+1, local.y+1, 1)
+					1:
+						set_cell(local.x+1, local.y+1, 0)
+					2:
+						set_cell(local.x+1, local.y+1, 3)
+					3:
+						set_cell(local.x+1, local.y+1, 2)

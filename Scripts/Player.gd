@@ -2,8 +2,8 @@ extends KinematicBody2D
 #Variables
 var hp: int = 5
 var speed: int = 300
-var jumpspeed: int = -150
-var gravity: int = 300
+var jumpspeed: int = -200
+var gravity: int = 500
 var velocity = Vector2()
 var states: Array = ['Ground', 'Air', 'Dash', 'Interact', 'Death', 'Blob']
 var state: String = states[0]
@@ -13,6 +13,7 @@ var breaker: bool = false
 var floor_block: int = -1
 var wall_block: int = -1
 var invincibility: bool = false
+var timer: bool = false
 #Signals
 signal Dead
 signal Ground
@@ -48,17 +49,17 @@ func get_input(delta):
 		if Input.is_action_just_pressed("move_left"):
 			velocity.x-= speed+500*10
 			state = states[1]
-			gravity = 300
+			gravity = 500
 			$AnimatedSprite.visible = true
 		elif Input.is_action_just_pressed("move_right"):
 			velocity.x+= speed+500*10
 			state = states[1]
-			gravity = 300
+			gravity = 500
 			$AnimatedSprite.visible = true
 		elif Input.is_action_just_pressed("jump"):
 			velocity.y -= speed*5
 			state = states[1]
-			gravity = 300
+			gravity = 500
 			$AnimatedSprite.visible = true
 	if not state in states.slice(2,5):
 		#Moving
@@ -68,57 +69,72 @@ func get_input(delta):
 			velocity.y+=jumpspeed
 			emit_signal('Jump')
 			emit_signal('Air')
-		#Right Move
-		if Input.is_action_pressed("move_right"):
-			facing = false
-			velocity.x += speed
-			emit_signal('Right')
-		#Left Move
-		elif Input.is_action_pressed("move_left"):
-			facing = true
-			velocity.x -= speed
-			emit_signal('Left')
-		#Stop Signal
-		else:
-			emit_signal("Stop")
+		if state==states[0]:
+			#Right Move
+			if Input.is_action_pressed("move_right"):
+				facing = false
+				velocity.x += speed
+				emit_signal('Right')
+			#Left Move
+			elif Input.is_action_pressed("move_left"):
+				facing = true
+				velocity.x -= speed
+				emit_signal('Left')
+			#Stop Signal
+			else:
+				emit_signal("Stop")
+		elif state==states[1]:
+			#Right Move
+			if Input.is_action_pressed("move_right"):
+				facing = false
+				velocity.x += speed-200
+				emit_signal('Right')
+			#Left Move
+			elif Input.is_action_pressed("move_left"):
+				facing = true
+				velocity.x -= speed-200
+				emit_signal('Left')
+			#Stop Signal
+			else:
+				emit_signal("Stop")
 		#Right Dash
 		if Input.is_action_just_pressed("dash") and Input.is_action_pressed('move_right'):
 			#Right Ground Dash
 			if state == states[0]:
-				state = states[2]
 				emit_signal('Right_Dash')
 				velocity.x = 0
-				velocity.x += 2500
+				velocity.x += 5000
 
 			#Right Air Dash
 			else:
 				state = states[2]
 				emit_signal('Right_Dash')
 				velocity.x = 0
-				velocity.x += 2500
+				velocity.x += 5000
 		
 		#Left Dash
 		if Input.is_action_just_pressed("dash") and Input.is_action_pressed('move_left'):
 			#Left Ground Dash
 			if state == states[0]:
-				state = states[2]
 				emit_signal('Left_Dash')
-				state = states[2]
 				velocity.x = 0
-				velocity.x -= 2500
+				velocity.x -= 5000
 			#Left Air Dash
 			else:
 				state = states[2]
 				emit_signal('Left_Dash')
 				velocity.x = 0
-				velocity.x -= 2500
+				velocity.x -= 5000
 		#Interact
 		if Input.is_action_just_pressed("interact"):
 			finished = false
 			state = states[3]
+			emit_signal('Interact', false)
+		if Input.is_action_just_pressed("destroy") and breaker==true:
+			finished = false
+			state = states[3]
 			emit_signal('Interact', breaker)
-			if breaker:
-				breaker = false
+			breaker = false
 	
 	#Gravity
 	velocity.y += gravity * delta
@@ -138,10 +154,13 @@ func _physics_process(delta):
 		$Timer.start()
 	if finished == true and hp==0:
 		hp = 5
-		get_tree().change_scene("res://Scenes/Earth-1.tscn")
+		get_tree().reload_current_scene()
 	#Bounce
-	if floor_block == 2:
-		velocity.y -= 400
+	if floor_block == 2 and timer==false:
+		timer=true
+		$Timer.start()
+		velocity.y -= 500
+		print(velocity.y)
 	#Icestick
 	if floor_block == 3:
 		speed = 100
@@ -150,7 +169,6 @@ func _physics_process(delta):
 	#Math
 	emit_signal("Block", position.x, position.y)
 	emit_signal('Direction', facing)
-	print(finished, hp)
 	
 #Dying and resetting states
 func _on_AnimatedSprite_animation_finished():
@@ -181,3 +199,4 @@ func _on_Grass_blocks(f_block, w_block):
 #Making invincible false
 func _on_Timer_timeout():
 	invincibility = false
+	timer = false
