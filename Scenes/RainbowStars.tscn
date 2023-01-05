@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="RainbowStars" type="CPUParticles2D"]
+position = Vector2( 456, 72 )
+amount = 35
+speed_scale = 0.1
+emission_shape = 2
+emission_rect_extents = Vector2( 280, 50 )
+gravity = Vector2( 0, 0 )
+hue_variation = 1.0
+hue_variation_random = 1.0

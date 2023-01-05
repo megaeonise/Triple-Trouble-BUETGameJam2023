@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/boc.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Sun.tscn" type="PackedScene" id=2]
@@ -11,9 +11,11 @@
 [ext_resource path="res://Assets/cloud2.png" type="Texture" id=9]
 [ext_resource path="res://Assets/sun.png" type="Texture" id=10]
 [ext_resource path="res://Assets/moonspace.png" type="Texture" id=11]
-[ext_resource path="res://Assets/citygud.png" type="Texture" id=12]
+[ext_resource path="res://Assets/spaceback.png" type="Texture" id=12]
 [ext_resource path="res://Assets/cloud3.png" type="Texture" id=13]
 [ext_resource path="res://Assets/moon earth.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/RainbowStars.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scripts/Goal5.gd" type="Script" id=16]
 
 [sub_resource type="TileSet" id=1]
 0/name = "sun.png 0"
@@ -145,10 +147,20 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="city" type="Sprite" parent="."]
-modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+[node name="spaceback" type="Sprite" parent="."]
 position = Vector2( 512, 288 )
 texture = ExtResource( 12 )
+
+[node name="RainbowStars" parent="." instance=ExtResource( 15 )]
+emission_rect_extents = Vector2( 300, 50 )
+
+[node name="RainbowStars2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 472, 448 )
+emission_rect_extents = Vector2( 300, 50 )
+
+[node name="RainbowStars3" parent="." instance=ExtResource( 15 )]
+position = Vector2( 464, 272 )
+emission_rect_extents = Vector2( 300, 50 )
 
 [node name="Grass" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, 0 )
@@ -162,6 +174,7 @@ position = Vector2( 208, 216 )
 
 [node name="Goal" parent="." instance=ExtResource( 3 )]
 position = Vector2( 992, 48 )
+script = ExtResource( 16 )
 
 [node name="Miscellaneous" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -171,6 +184,7 @@ tile_data = PoolIntArray( 4, 1, 0, 65538, 4, 0, 65539, 4, 1, 65544, 5, 0, 65545,
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 position = Vector2( 824, 24 )
+frame = 0
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 40, 560 )

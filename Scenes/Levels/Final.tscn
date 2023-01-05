@@ -11,7 +11,7 @@
 [ext_resource path="res://Assets/cloud2.png" type="Texture" id=9]
 [ext_resource path="res://Assets/sun.png" type="Texture" id=10]
 [ext_resource path="res://Assets/moonspace.png" type="Texture" id=11]
-[ext_resource path="res://Assets/citygud.png" type="Texture" id=12]
+[ext_resource path="res://Assets/spaceback.png" type="Texture" id=12]
 [ext_resource path="res://Assets/cloud3.png" type="Texture" id=13]
 [ext_resource path="res://Assets/moon earth.png" type="Texture" id=14]
 
@@ -145,8 +145,7 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="city" type="Sprite" parent="."]
-modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+[node name="spaceback" type="Sprite" parent="."]
 position = Vector2( 512, 288 )
 texture = ExtResource( 12 )
 
@@ -171,6 +170,7 @@ tile_data = PoolIntArray( 4, 1, 0, 65538, 4, 0, 65539, 4, 1, 65544, 5, 0, 65545,
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 position = Vector2( 824, 24 )
+frame = 0
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 40, 560 )

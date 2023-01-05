@@ -147,7 +147,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="city" type="Sprite" parent="."]
-modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+modulate = Color( 0.227451, 0.227451, 0.227451, 1 )
 position = Vector2( 512, 288 )
 texture = ExtResource( 11 )
 
@@ -172,7 +172,7 @@ tile_data = PoolIntArray( 65538, 4, 0, 65539, 4, 1, 65544, 5, 0, 65545, 5, 1, 65
 
 [node name="Sun" parent="." instance=ExtResource( 10 )]
 position = Vector2( 464, 48 )
-frame = 1
+frame = 2
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 448, 160 )
@@ -184,7 +184,7 @@ position = Vector2( 992, 544 )
 [connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]
 [connection signal="Direction" from="Player" to="Grass" method="_on_Player_Direction"]
 [connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]
-[connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
