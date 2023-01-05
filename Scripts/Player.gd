@@ -147,6 +147,8 @@ func _physics_process(delta):
 	if hp==0:
 		state=states[4]
 		emit_signal('Dead')
+	if Input.is_action_just_pressed("die"):
+		hp = 0
 	#Damage
 	if floor_block == 0 and invincibility == false and hp!=0:
 		hp-=1
