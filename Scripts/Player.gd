@@ -37,7 +37,6 @@ func get_input(delta):
 		emit_signal('Air')
 		$AnimatedSprite.visible = true
 	if state == states[5]:
-		gravity = 0
 		velocity.x = 0
 		velocity.y = 0
 		$AnimatedSprite.visible = false
