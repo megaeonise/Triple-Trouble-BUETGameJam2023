@@ -64,3 +64,11 @@ func _on_Player_Air():
 #Setting flag for being on ground in general
 func _on_Player_Ground():
 	air = false
+
+
+func _on_Player_Dead():
+	finished = false
+	if facing == true:
+		_animation.play('Left Death')
+	else:
+		_animation.play('Right Death')

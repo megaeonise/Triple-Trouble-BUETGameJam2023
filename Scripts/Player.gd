@@ -1,5 +1,6 @@
 extends KinematicBody2D
 #Variables
+var hp: int = 5
 var speed: int = 300
 var jumpspeed: int = -150
 var gravity: int = 300
@@ -9,7 +10,11 @@ var state: String = states[0]
 var finished: bool = false
 var facing: bool = false
 var breaker: bool = false
+var floor_block: int = -1
+var wall_block: int = -1
+var invincibility: bool = false
 #Signals
+signal Dead
 signal Ground
 signal Right
 signal Left
@@ -80,7 +85,6 @@ func get_input(delta):
 		if Input.is_action_just_pressed("dash") and Input.is_action_pressed('move_right'):
 			#Right Ground Dash
 			if state == states[0]:
-				print('rdash')
 				state = states[2]
 				emit_signal('Right_Dash')
 				velocity.x = 0
@@ -88,7 +92,6 @@ func get_input(delta):
 
 			#Right Air Dash
 			else:
-				print('rudash')
 				state = states[2]
 				emit_signal('Right_Dash')
 				velocity.x = 0
@@ -99,14 +102,12 @@ func get_input(delta):
 			#Left Ground Dash
 			if state == states[0]:
 				state = states[2]
-				print('ldash')
 				emit_signal('Left_Dash')
 				state = states[2]
 				velocity.x = 0
 				velocity.x -= 2500
 			#Left Air Dash
 			else:
-				print('ludash')
 				state = states[2]
 				emit_signal('Left_Dash')
 				velocity.x = 0
@@ -126,24 +127,57 @@ func get_input(delta):
 #Driver code
 func _physics_process(delta):
 	get_input(delta)
+	#Death
+	if hp==0:
+		state=states[4]
+		emit_signal('Dead')
+	#Damage
+	if floor_block == 0 and invincibility == false and hp!=0:
+		hp-=1
+		invincibility = true
+		$Timer.start()
+	if finished == true and hp==0:
+		hp = 5
+		get_tree().change_scene("res://Scenes/Earth-1.tscn")
+	#Bounce
+	if floor_block == 2:
+		velocity.y -= 400
+	#Icestick
+	if floor_block == 3:
+		speed = 100
+	else:
+		speed = 300
 	#Math
 	emit_signal("Block", position.x, position.y)
 	emit_signal('Direction', facing)
-	print(state)
-
+	print(finished, hp)
+	
+#Dying and resetting states
 func _on_AnimatedSprite_animation_finished():
+	if state == states[4]:
+		finished = true
 	if is_on_floor():
 		state = states[0]
 		emit_signal("Ground")
 	else:
 		state = states[1]
 		emit_signal("Air")
+	
 
-
+#Going in bubble
 func _on_DarkMatter_body_entered(body):
 	state = states[5]
 
-
+#Powering up
 func _on_Breaker_body_entered(body):
 	breaker = true
 	
+
+#Grass script is every interactable block script fyi, too scared to change name
+func _on_Grass_blocks(f_block, w_block):
+	floor_block = f_block
+	wall_block = w_block
+
+#Making invincible false
+func _on_Timer_timeout():
+	invincibility = false

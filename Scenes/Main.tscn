@@ -12,12 +12,13 @@
 
 [node name="Grass" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 0 )
-tile_data = PoolIntArray( 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 327684, 0, 0, 327685, 1, 0, 327686, 0, 0, 327687, 1, 0, 327688, 0, 0, 327689, 1, 0 )
+tile_data = PoolIntArray( 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 327684, 0, 0, 327685, 1, 0, 327686, 0, 0, 327687, 1, 0, 327688, 0, 0, 327689, 1, 0, 393231, 4, 0, 393232, 4, 0, 393233, 4, 0, 458766, 4, 0, 524301, 4, 0, 589828, 3, 0, 589829, 3, 0, 589833, 2, 0, 589836, 4, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 368, 168 )
+position = Vector2( 312, 144 )
 
 [node name="TileMap" parent="." instance=ExtResource( 2 )]
+tile_data = PoolIntArray( 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 1179648, 0, 0 )
 
 [node name="DarkMatter" parent="." instance=ExtResource( 4 )]
 position = Vector2( 208, 160 )
@@ -25,6 +26,7 @@ script = SubResource( 1 )
 
 [node name="Breaker" parent="." instance=ExtResource( 5 )]
 position = Vector2( 552, 152 )
+[connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
 [connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]
 [connection signal="Direction" from="Player" to="Grass" method="_on_Player_Direction"]
 [connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]
