@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Grass.gd" type="Script" id=3]
+
+
+[sub_resource type="TileSet" id=1]
+
+[node name="Grass" type="TileMap"]
+position = Vector2( 64, 32 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_bounce = 1.0
+format = 1
+script = ExtResource( 3 )

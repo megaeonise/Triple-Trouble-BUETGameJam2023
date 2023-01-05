@@ -4,10 +4,11 @@ var speed: int = 300
 var jumpspeed: int = -150
 var gravity: int = 300
 var velocity = Vector2()
-var states: Array = ['Ground', 'Air', 'Dash', 'Interact', 'Death']
+var states: Array = ['Ground', 'Air', 'Dash', 'Interact', 'Death', 'Blob']
 var state: String = states[0]
 var finished: bool = false
 var facing: bool = false
+var breaker: bool = false
 #Signals
 signal Ground
 signal Right
@@ -17,7 +18,7 @@ signal Left_Dash
 signal Air
 signal Stop
 signal Jump
-signal Interact
+signal Interact(breaker)
 signal Block(x, y)
 signal Direction(facing)
 
@@ -26,10 +27,36 @@ func get_input(delta):
 	#Initial Velocity
 	velocity.x = 0
 	#Setting Ground state after returning from Air
-	if is_on_floor() and state == states[1]:
+	if is_on_floor() and state == states[1] and not state in states.slice(2,5):
 		state = states[0]
 		emit_signal('Ground')
-	if not state in states.slice(2,4):
+		$AnimatedSprite.visible = true
+	#Setting Air state after falling
+	if is_on_floor()!=true and not state in states.slice(2,5):
+		state = states[1]
+		emit_signal('Air')
+		$AnimatedSprite.visible = true
+	if state == states[5]:
+		gravity = 0
+		velocity.x = 0
+		velocity.y = 0
+		$AnimatedSprite.visible = false
+		if Input.is_action_just_pressed("move_left"):
+			velocity.x-= speed+500*10
+			state = states[1]
+			gravity = 300
+			$AnimatedSprite.visible = true
+		elif Input.is_action_just_pressed("move_right"):
+			velocity.x+= speed+500*10
+			state = states[1]
+			gravity = 300
+			$AnimatedSprite.visible = true
+		elif Input.is_action_just_pressed("jump"):
+			velocity.y -= speed*5
+			state = states[1]
+			gravity = 300
+			$AnimatedSprite.visible = true
+	if not state in states.slice(2,5):
 		#Moving
 		#Jump
 		if Input.is_action_just_pressed("jump") and state == states[0]:
@@ -89,7 +116,9 @@ func get_input(delta):
 		if Input.is_action_just_pressed("interact"):
 			finished = false
 			state = states[3]
-			emit_signal('Interact')
+			emit_signal('Interact', breaker)
+			if breaker:
+				breaker = false
 	
 	#Gravity
 	velocity.y += gravity * delta
@@ -101,6 +130,7 @@ func _physics_process(delta):
 	#Math
 	emit_signal("Block", position.x, position.y)
 	emit_signal('Direction', facing)
+	print(state)
 
 func _on_AnimatedSprite_animation_finished():
 	if is_on_floor():
@@ -111,3 +141,10 @@ func _on_AnimatedSprite_animation_finished():
 		emit_signal("Air")
 
 
+func _on_DarkMatter_body_entered(body):
+	state = states[5]
+
+
+func _on_Breaker_body_entered(body):
+	breaker = true
+	

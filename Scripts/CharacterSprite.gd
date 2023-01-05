@@ -20,7 +20,7 @@ func _on_Player_Jump():
 	else:
 		_animation.play('Left Jump')
 
-func _on_Player_Interact():
+func _on_Player_Interact(breaker):
 	finished = false
 	if facing == true:
 		_animation.play('Left Interact')
