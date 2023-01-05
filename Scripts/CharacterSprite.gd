@@ -1,6 +1,6 @@
 extends AnimatedSprite
 
-#Variables
+#Variables(For facing, false is right and true is left.)
 onready var _animation = self
 var facing = false
 var air = false

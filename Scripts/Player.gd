@@ -1,13 +1,13 @@
 extends KinematicBody2D
 #Variables
-var speed: int = 500
-var jumpspeed: int = -250
-var gravity: int = 500
+var speed: int = 300
+var jumpspeed: int = -150
+var gravity: int = 300
 var velocity = Vector2()
 var states: Array = ['Ground', 'Air', 'Dash', 'Interact', 'Death']
 var state: String = states[0]
 var finished: bool = false
-var collision: bool = false
+var facing: bool = false
 #Signals
 signal Ground
 signal Right
@@ -18,7 +18,8 @@ signal Air
 signal Stop
 signal Jump
 signal Interact
-signal Collision
+signal Block(x, y)
+signal Direction(facing)
 
 #Controls
 func get_input(delta):
@@ -38,10 +39,12 @@ func get_input(delta):
 			emit_signal('Air')
 		#Right Move
 		if Input.is_action_pressed("move_right"):
+			facing = false
 			velocity.x += speed
 			emit_signal('Right')
 		#Left Move
 		elif Input.is_action_pressed("move_left"):
+			facing = true
 			velocity.x -= speed
 			emit_signal('Left')
 		#Stop Signal
@@ -95,12 +98,9 @@ func get_input(delta):
 #Driver code
 func _physics_process(delta):
 	get_input(delta)
-	for count in get_slide_count():
-		print('lesss goo')
-		collision = get_slide_collision(count)
-		if collision:
-			emit_signal("Collision")
-
+	#Math
+	emit_signal("Block", position.x, position.y)
+	emit_signal('Direction', facing)
 
 func _on_AnimatedSprite_animation_finished():
 	if is_on_floor():
@@ -109,3 +109,5 @@ func _on_AnimatedSprite_animation_finished():
 	else:
 		state = states[1]
 		emit_signal("Air")
+
+
