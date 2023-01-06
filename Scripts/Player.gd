@@ -170,9 +170,11 @@ func get_input(delta):
 			breaker -= 1
 			$CPUParticles2D.set_emitting(false)
 			if not facing:
+				$Destroball.set_emitting(true)
 				$Destructor1.set_emitting(true)
 				$Destructor1/Des_Time1.start()
 			else:
+				$Destroball2.set_emitting(true)
 				$DestructorL1.set_emitting(true)
 				$DestructorL1/Des_Time1L.start()
 		elif Input.is_action_pressed("destroy") and breaker==0:
@@ -347,6 +349,7 @@ func _on_Des_Time4_timeout():
 
 
 func _on_Des_Time5_timeout():
+	$Destroball.set_emitting(false)
 	$Destructor2.set_emitting(true)
 	
 func _on_Des_Time1L_timeout():
@@ -370,6 +373,7 @@ func _on_Des_Time4L_timeout():
 
 
 func _on_Des_Time5L_timeout():
+	$Destroball2.set_emitting(false)
 	$DestructorL2.set_emitting(true)
 
 

@@ -40,14 +40,15 @@ texture = ExtResource( 8 )
 [node name="CPUParticles2D" type="CPUParticles2D" parent="moondistortion"]
 position = Vector2( 0, 1.54216 )
 amount = 25
-speed_scale = 0.25
+lifetime = 0.5
+speed_scale = 0.5
 randomness = 1.0
 texture = ExtResource( 7 )
 emission_shape = 2
 emission_rect_extents = Vector2( 20, 20 )
 gravity = Vector2( 0, 0 )
-orbit_velocity = 1.0
-scale_amount = 0.3
+radial_accel = -100.0
+scale_amount = 0.2
 color = Color( 0.686275, 0, 1, 1 )
 
 [node name="citygud2" type="Sprite" parent="."]
@@ -97,6 +98,7 @@ position = Vector2( 480, 240 )
 position = Vector2( 528, 696 )
 
 [node name="Title" type="Sprite" parent="."]
+visible = false
 self_modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 512, 288 )
 scale = Vector2( 1, 1.05263 )
@@ -143,8 +145,8 @@ position = Vector2( 48, 528 )
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Breaker3" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker3" to="Breaker3" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker3" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Fire" to="Player" method="_on_Fire_body_entered"]
 [connection signal="body_entered" from="Death Plane" to="Player" method="_on_Death_Plane_body_entered"]
 [connection signal="timeout" from="Title/Timer" to="Title" method="_on_Timer_timeout"]
