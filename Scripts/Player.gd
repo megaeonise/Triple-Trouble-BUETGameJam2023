@@ -205,7 +205,7 @@ func _physics_process(delta):
 		hp = 5
 		get_tree().reload_current_scene()
 	#Bounce
-	if floor_block == 2 and timer==false:
+	if floor_block == 10 and timer==false:
 		timer=true
 		$Timer.start()
 		velocity.y -= 500

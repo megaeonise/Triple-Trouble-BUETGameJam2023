@@ -51,10 +51,10 @@ func _on_Player_Interact(breaker):
 						set_cell(local.x-1, local.y, 1)
 					1:
 						set_cell(local.x-1, local.y, 0)
-					2:
+					10:
 						set_cell(local.x-1, local.y, 3)
 					3:
-						set_cell(local.x-1, local.y, 2)
+						set_cell(local.x-1, local.y, 10)
 					6:
 						set_cell(local.x-1, local.y, 8)
 					8:
@@ -65,10 +65,10 @@ func _on_Player_Interact(breaker):
 						set_cell(local.x+1, local.y, 1)
 					1:
 						set_cell(local.x+1, local.y, 0)
-					2:
+					10:
 						set_cell(local.x+1, local.y, 3)
 					3:
-						set_cell(local.x+1, local.y, 2)
+						set_cell(local.x+1, local.y, 10)
 					6:
 						set_cell(local.x+1, local.y, 8)
 					8:
@@ -80,10 +80,10 @@ func _on_Player_Interact(breaker):
 						set_cell(local.x-1, local.y+1, 1)
 					1:
 						set_cell(local.x-1, local.y+1, 0)
-					2:
+					10:
 						set_cell(local.x-1, local.y+1, 3)
 					3:
-						set_cell(local.x-1, local.y+1, 2)
+						set_cell(local.x-1, local.y+1, 10)
 					6:
 						set_cell(local.x-1, local.y+1, 8)
 					8:
@@ -94,10 +94,10 @@ func _on_Player_Interact(breaker):
 						set_cell(local.x+1, local.y+1, 1)
 					1:
 						set_cell(local.x+1, local.y+1, 0)
-					2:
+					10:
 						set_cell(local.x+1, local.y+1, 3)
 					3:
-						set_cell(local.x+1, local.y+1, 2)
+						set_cell(local.x+1, local.y+1, 10)
 					6:
 						set_cell(local.x+1, local.y+1, 8)
 					8:

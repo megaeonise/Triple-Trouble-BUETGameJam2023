@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/boc.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Title.gd" type="Script" id=2]
@@ -6,152 +6,20 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Grass.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Breaker.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/cloud1.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Miscellaneous.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/moondistortion.png" type="Texture" id=8]
-[ext_resource path="res://Assets/cloud2.png" type="Texture" id=9]
-[ext_resource path="res://Assets/sun.png" type="Texture" id=10]
-[ext_resource path="res://Assets/moonspace.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/RainbowStars.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/spaceback.png" type="Texture" id=12]
-[ext_resource path="res://Assets/cloud3.png" type="Texture" id=13]
-[ext_resource path="res://Assets/moon earth.png" type="Texture" id=14]
 [ext_resource path="res://Assets/citygud.png" type="Texture" id=15]
 [ext_resource path="res://Scripts/Goal6.gd" type="Script" id=16]
 [ext_resource path="res://Assets/Fonts/Big Pixel Light demo.otf" type="DynamicFontData" id=17]
 [ext_resource path="res://Scripts/Tutorial-1.gd" type="Script" id=18]
 [ext_resource path="res://Assets/tree.png" type="Texture" id=19]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 8 )
 
-[sub_resource type="TileSet" id=1]
-0/name = "sun.png 0"
-0/texture = ExtResource( 10 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 96, 32 )
-0/tile_mode = 2
-0/autotile/icon_coordinate = Vector2( 0, 0 )
-0/autotile/tile_size = Vector2( 32, 32 )
-0/autotile/spacing = 0
-0/autotile/occluder_map = [  ]
-0/autotile/navpoly_map = [  ]
-0/autotile/priority_map = [  ]
-0/autotile/z_index_map = [  ]
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
-1/name = "moon earth.png 1"
-1/texture = ExtResource( 14 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 0, 32, 32 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape_one_way = false
-1/shape_one_way_margin = 0.0
-1/shapes = [  ]
-1/z_index = 0
-2/name = "moonspace.png 2"
-2/texture = ExtResource( 11 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 0, 0, 32, 32 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape_one_way = false
-2/shape_one_way_margin = 0.0
-2/shapes = [  ]
-2/z_index = 0
-3/name = "moondistortion.png 3"
-3/texture = ExtResource( 8 )
-3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 0, 0, 32, 32 )
-3/tile_mode = 0
-3/occluder_offset = Vector2( 0, 0 )
-3/navigation_offset = Vector2( 0, 0 )
-3/shape_offset = Vector2( 0, 0 )
-3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape_one_way = false
-3/shape_one_way_margin = 0.0
-3/shapes = [  ]
-3/z_index = 0
-4/name = "cloud1.png 4"
-4/texture = ExtResource( 7 )
-4/tex_offset = Vector2( 0, 0 )
-4/modulate = Color( 1, 1, 1, 1 )
-4/region = Rect2( 0, 0, 64, 32 )
-4/tile_mode = 2
-4/autotile/icon_coordinate = Vector2( 0, 0 )
-4/autotile/tile_size = Vector2( 32, 32 )
-4/autotile/spacing = 0
-4/autotile/occluder_map = [  ]
-4/autotile/navpoly_map = [  ]
-4/autotile/priority_map = [  ]
-4/autotile/z_index_map = [  ]
-4/occluder_offset = Vector2( 0, 0 )
-4/navigation_offset = Vector2( 0, 0 )
-4/shape_offset = Vector2( 0, 0 )
-4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-4/shape_one_way = false
-4/shape_one_way_margin = 0.0
-4/shapes = [  ]
-4/z_index = 0
-5/name = "cloud2.png 5"
-5/texture = ExtResource( 9 )
-5/tex_offset = Vector2( 0, 0 )
-5/modulate = Color( 1, 1, 1, 1 )
-5/region = Rect2( 0, 0, 64, 32 )
-5/tile_mode = 2
-5/autotile/icon_coordinate = Vector2( 0, 0 )
-5/autotile/tile_size = Vector2( 32, 32 )
-5/autotile/spacing = 0
-5/autotile/occluder_map = [  ]
-5/autotile/navpoly_map = [  ]
-5/autotile/priority_map = [  ]
-5/autotile/z_index_map = [  ]
-5/occluder_offset = Vector2( 0, 0 )
-5/navigation_offset = Vector2( 0, 0 )
-5/shape_offset = Vector2( 0, 0 )
-5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape_one_way = false
-5/shape_one_way_margin = 0.0
-5/shapes = [  ]
-5/z_index = 0
-6/name = "cloud3.png 6"
-6/texture = ExtResource( 13 )
-6/tex_offset = Vector2( 0, 0 )
-6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 0, 0, 64, 32 )
-6/tile_mode = 2
-6/autotile/icon_coordinate = Vector2( 0, 0 )
-6/autotile/tile_size = Vector2( 32, 32 )
-6/autotile/spacing = 0
-6/autotile/occluder_map = [  ]
-6/autotile/navpoly_map = [  ]
-6/autotile/priority_map = [  ]
-6/autotile/z_index_map = [  ]
-6/occluder_offset = Vector2( 0, 0 )
-6/navigation_offset = Vector2( 0, 0 )
-6/shape_offset = Vector2( 0, 0 )
-6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape_one_way = false
-6/shape_one_way_margin = 0.0
-6/shapes = [  ]
-6/z_index = 0
-
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 32
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
@@ -165,6 +33,9 @@ self_modulate = Color( 0.886275, 0.368627, 0.25098, 1 )
 position = Vector2( 512, 296 )
 rotation = -3.14159
 texture = ExtResource( 15 )
+
+[node name="RainbowStars" parent="." instance=ExtResource( 9 )]
+position = Vector2( 520, 440 )
 
 [node name="spaceback" type="Sprite" parent="."]
 modulate = Color( 0.886275, 0.368627, 0.25098, 1 )
@@ -181,6 +52,7 @@ visible = false
 texture = ExtResource( 19 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tutorial2"]
+visible = false
 margin_left = 48.0
 margin_top = -496.0
 margin_right = 504.0
@@ -196,7 +68,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial2"]
 visible = false
 position = Vector2( 0, -24 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="Tutorial2"]
 wait_time = 7.0
@@ -209,6 +81,10 @@ tile_data = PoolIntArray( 327709, 6, 0, 327710, 6, 0, 393220, 6, 0, 393221, 6, 0
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
 tile_data = PoolIntArray( -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -196601, 0, 0, -196600, 0, 0, -196599, 0, 0, -196598, 0, 0, -196597, 0, 0, -196596, 0, 0, -196595, 0, 0, -196594, 0, 0, -196593, 0, 0, -196592, 0, 0, -196591, 0, 0, -196590, 0, 0, -196589, 0, 0, -196588, 0, 0, -196587, 0, 0, -196586, 0, 0, -196585, 0, 0, -196584, 0, 0, -196583, 0, 0, -196582, 0, 0, -196581, 0, 0, -196580, 0, 0, -196579, 0, 0, -196578, 0, 0, -196577, 0, 0, -196576, 0, 0, -65537, 0, 0, -131040, 0, 0, -1, 0, 0, -65504, 0, 0, 65535, 0, 0, 32, 0, 0, 131071, 0, 0, 65568, 0, 0, 196607, 0, 0, 131104, 0, 0, 262143, 0, 0, 196640, 0, 0, 327679, 0, 0, 262176, 0, 0, 393215, 0, 0, 327712, 0, 0, 458751, 0, 0, 393248, 0, 0, 524287, 0, 0, 458784, 0, 0, 589823, 0, 0, 524320, 0, 0, 655359, 0, 0, 589856, 0, 0, 720895, 0, 0, 655392, 0, 0, 786431, 0, 0, 720928, 0, 0, 851967, 0, 0, 786464, 0, 0, 917503, 0, 0, 852000, 0, 0, 983039, 0, 0, 917536, 0, 0, 1048575, 0, 0, 983072, 0, 0, 1114111, 0, 0, 1048608, 0, 0, 1179647, 0, 0, 1114144, 0, 0, 1245183, 0, 0, 1179680, 0, 0, 1376254, 0, 0, 1376255, 0, 0, 1310720, 0, 0, 1310721, 0, 0, 1310722, 0, 0, 1310723, 0, 0, 1310724, 0, 0, 1310725, 0, 0, 1310726, 0, 0, 1310727, 0, 0, 1310728, 0, 0, 1310729, 0, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0, 1310733, 0, 0, 1310734, 0, 0, 1310735, 0, 0, 1310736, 0, 0, 1310737, 0, 0, 1310738, 0, 0, 1310739, 0, 0, 1310740, 0, 0, 1310741, 0, 0, 1310742, 0, 0, 1310743, 0, 0, 1310744, 0, 0, 1310745, 0, 0, 1310746, 0, 0, 1310747, 0, 0, 1310748, 0, 0, 1310749, 0, 0, 1310750, 0, 0, 1310751, 0, 0, 1310752, 0, 0, 1310753, 0, 0 )
 
+[node name="Miscellaneous" parent="." instance=ExtResource( 7 )]
+self_modulate = Color( 1, 0.180392, 0, 1 )
+tile_data = PoolIntArray( 13, 4, 0, 14, 6, 1, 131076, 4, 0, 131077, 4, 1, 131091, 6, 0, 131092, 5, 1, 131101, 6, 0, 131102, 6, 1, 262156, 5, 0, 262157, 5, 1, 262167, 6, 0, 262168, 6, 1, 458782, 6, 0, 458783, 6, 1, 655367, 7, 0, 655385, 7, 0, 720897, 7, 0, 786448, 7, 0, 786463, 7, 0 )
+
 [node name="Breaker" parent="." instance=ExtResource( 6 )]
 position = Vector2( 832, 56 )
 
@@ -216,14 +92,10 @@ position = Vector2( 832, 56 )
 position = Vector2( 96, 88 )
 script = ExtResource( 16 )
 
-[node name="Miscellaneous" type="TileMap" parent="."]
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65538, 4, 0, 65539, 4, 1, 65544, 5, 0, 65545, 5, 1, 65558, 5, 0, 65559, 5, 1, 131088, 6, 0, 131089, 6, 1, 458769, 3, 0 )
-
-[node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 48, 530 )
+[node name="moondistortion" type="Sprite" parent="."]
+position = Vector2( 546, 274 )
+scale = Vector2( 2.375, 2.375 )
+texture = ExtResource( 8 )
 
 [node name="Title" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 1 )
@@ -253,7 +125,7 @@ margin_left = -184.0
 margin_top = -68.4001
 margin_right = 200.0
 margin_bottom = 75.5999
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 bbcode_enabled = true
 bbcode_text = "
@@ -264,13 +136,16 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 48, 530 )
 [connection signal="body_entered" from="Tutorial2" to="Tutorial2" method="_on_Tutorial_body_entered"]
 [connection signal="body_exited" from="Tutorial2" to="Tutorial2" method="_on_Tutorial_body_exited"]
 [connection signal="timeout" from="Tutorial2/Timer" to="Tutorial2" method="_on_Timer_timeout"]
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
 [connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
+[connection signal="timeout" from="Title/Timer" to="Title" method="_on_Timer_timeout"]
 [connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]
 [connection signal="Direction" from="Player" to="Grass" method="_on_Player_Direction"]
 [connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]
-[connection signal="timeout" from="Title/Timer" to="Title" method="_on_Timer_timeout"]

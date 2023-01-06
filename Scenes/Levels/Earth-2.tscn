@@ -164,9 +164,6 @@ texture = ExtResource( 11 )
 position = Vector2( 0, 0 )
 tile_data = PoolIntArray( 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 262156, 4, 0, 262159, 4, 0, 327691, 1, 0, 327692, 4, 0, 327695, 4, 0, 327696, 1, 0, 327697, 1, 0, 393216, 1, 0, 393227, 4, 0, 393228, 4, 0, 393229, 4, 0, 393230, 4, 0, 393231, 4, 0, 393232, 4, 0, 393233, 4, 0, 393239, 1, 0, 393240, 1, 0, 458752, 4, 0, 458759, 3, 0, 458760, 3, 0, 458773, 3, 0, 458774, 3, 0, 458779, 1, 0, 458780, 1, 0, 458781, 1, 0, 524315, 4, 0, 524316, 4, 0, 524317, 4, 0, 589851, 4, 0, 589852, 4, 0, 589853, 4, 0, 655376, 4, 0, 655387, 4, 0, 655388, 4, 0, 655389, 4, 0, 720913, 4, 0, 720923, 4, 0, 720924, 4, 0, 720925, 4, 0, 786449, 4, 0, 786459, 4, 0, 786460, 4, 0, 786461, 4, 0, 786462, 3, 0, 786463, 3, 0, 851984, 0, 0, 851985, 4, 0, 851994, 4, 0, 851995, 4, 0, 851996, 4, 0, 851997, 4, 0, 851998, 4, 0, 851999, 4, 0, 917511, 3, 0, 917512, 3, 0, 917513, 3, 0, 917514, 3, 0, 917515, 3, 0, 917516, 3, 0, 917520, 4, 0, 917521, 4, 0, 917529, 4, 0, 917530, 4, 0, 917531, 4, 0, 917532, 4, 0, 917533, 4, 0, 983056, 4, 0, 1048592, 4, 0, 1114128, 4, 0, 1179648, 1, 0, 1179649, 1, 0, 1179650, 1, 0, 1179651, 1, 0, 1179652, 1, 0, 1179653, 1, 0, 1179654, 1, 0, 1179655, 1, 0, 1179656, 1, 0, 1179657, 1, 0, 1179658, 1, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 3, 0, 1179662, 3, 0, 1179663, 3, 0, 1179664, 4, 0, 1179665, 3, 0, 1179666, 3, 0, 1179667, 3, 0, 1179668, 3, 0, 1179669, 3, 0, 1179670, 3, 0, 1179671, 0, 0, 1179672, 0, 0, 1179673, 1, 0, 1179674, 1, 0, 1179675, 1, 0, 1179676, 1, 0, 1179677, 1, 0, 1179678, 1, 0, 1179679, 1, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 32, 560 )
-
 [node name="TileMap" parent="." instance=ExtResource( 2 )]
 tile_data = PoolIntArray( -1, 0, 0, -65504, 0, 0, 65535, 0, 0, 32, 0, 0, 131071, 0, 0, 65568, 0, 0, 196607, 0, 0, 131104, 0, 0, 262143, 0, 0, 196640, 0, 0, 327679, 0, 0, 262176, 0, 0, 393215, 0, 0, 327712, 0, 0, 458751, 0, 0, 393248, 0, 0, 524287, 0, 0, 458784, 0, 0, 589823, 0, 0, 524320, 0, 0, 655359, 0, 0, 589856, 0, 0, 720895, 0, 0, 655392, 0, 0, 786431, 0, 0, 720928, 0, 0, 851967, 0, 0, 786464, 0, 0, 917503, 0, 0, 852000, 0, 0, 983039, 0, 0, 917536, 0, 0, 1048575, 0, 0, 983072, 0, 0, 1114111, 0, 0, 1048608, 0, 0, 1179647, 0, 0, 1114144, 0, 0, 1245183, 0, 0, 1179680, 0, 0, 1376254, 0, 0, 1376255, 0, 0, 1310720, 0, 0, 1310721, 0, 0, 1310722, 0, 0, 1310723, 0, 0, 1310724, 0, 0, 1310725, 0, 0, 1310726, 0, 0, 1310727, 0, 0, 1310728, 0, 0, 1310729, 0, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0, 1310733, 0, 0, 1310734, 0, 0, 1310735, 0, 0, 1310736, 0, 0, 1310737, 0, 0, 1310738, 0, 0, 1310739, 0, 0, 1310740, 0, 0, 1310741, 0, 0, 1310742, 0, 0, 1310743, 0, 0, 1310744, 0, 0, 1310745, 0, 0, 1310746, 0, 0, 1310747, 0, 0, 1310748, 0, 0, 1310749, 0, 0, 1310750, 0, 0, 1310751, 0, 0, 1310752, 0, 0, 1310753, 0, 0 )
 
@@ -181,7 +178,6 @@ tile_data = PoolIntArray( 65538, 4, 0, 65539, 4, 1, 65544, 5, 0, 65545, 5, 1, 65
 
 [node name="Sun" parent="." instance=ExtResource( 10 )]
 position = Vector2( 464, 48 )
-frame = 2
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 448, 160 )
@@ -231,13 +227,16 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32, 560 )
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
-[connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]
-[connection signal="Direction" from="Player" to="Grass" method="_on_Player_Direction"]
-[connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]
 [connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Fire" to="Player" method="_on_Fire_body_entered"]
 [connection signal="timeout" from="Title/Timer" to="Title" method="_on_Timer_timeout"]
+[connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]
+[connection signal="Direction" from="Player" to="Grass" method="_on_Player_Direction"]
+[connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]

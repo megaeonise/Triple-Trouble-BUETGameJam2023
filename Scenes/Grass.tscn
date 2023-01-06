@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Assets/grass.png" type="Texture" id=1]
 [ext_resource path="res://Assets/bladed_grass.png" type="Texture" id=2]
@@ -11,11 +11,15 @@
 [ext_resource path="res://Assets/Lava.tres" type="Texture" id=9]
 [ext_resource path="res://Assets/crystal.png" type="Texture" id=10]
 [ext_resource path="res://Assets/spaceblock.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Water.tres" type="Texture" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
@@ -39,10 +43,10 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=11]
+[sub_resource type="ConvexPolygonShape2D" id=10]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="TileSet" id=10]
+[sub_resource type="TileSet" id=11]
 0/name = "bladed_grass.png 0"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
@@ -242,21 +246,42 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 9/navigation_offset = Vector2( 0, 0 )
 9/shape_offset = Vector2( 0, 0 )
 9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-9/shape = SubResource( 11 )
+9/shape = SubResource( 10 )
 9/shape_one_way = false
 9/shape_one_way_margin = 1.0
 9/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 11 ),
+"shape": SubResource( 10 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 9/z_index = 0
+10/name = "Water.tres 10"
+10/texture = ExtResource( 12 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 0, 0, 32, 32 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape = SubResource( 12 )
+10/shape_one_way = false
+10/shape_one_way_margin = 1.0
+10/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 12 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+10/z_index = 0
 
 [node name="Grass" type="TileMap"]
 position = Vector2( 64, 32 )
-tile_set = SubResource( 10 )
+tile_set = SubResource( 11 )
 cell_size = Vector2( 32, 32 )
 collision_bounce = 1.0
 format = 1
