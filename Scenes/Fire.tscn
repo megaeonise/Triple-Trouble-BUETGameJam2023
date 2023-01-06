@@ -37,7 +37,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -8 )
 frames = SubResource( 5 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

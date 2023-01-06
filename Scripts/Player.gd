@@ -17,6 +17,7 @@ var invincibility: bool = false
 var timer: bool = false
 var can_emit: bool = false
 var can_jump: bool = false
+var super_jump: bool = false
 #Signals
 signal Dead
 signal Ground
@@ -73,10 +74,17 @@ func get_input(delta):
 		#Moving
 		#Jump
 		if Input.is_action_just_pressed("jump") and state == states[0]:
-			state = states[1]
-			velocity.y+=jumpspeed
-			emit_signal('Jump')
-			emit_signal('Air')
+			if super_jump:
+				state = states[1]
+				velocity.y+=jumpspeed*2.5
+				super_jump = false
+				emit_signal('Jump')
+				emit_signal('Air')
+			else:
+				state = states[1]
+				velocity.y+=jumpspeed
+				emit_signal('Jump')
+				emit_signal('Air')
 		if state==states[0]:
 			#Right Move
 			if Input.is_action_pressed("move_right"):
@@ -174,8 +182,10 @@ func _physics_process(delta):
 	#Damage
 	if floor_block == 0 and invincibility == false and hp!=0:
 		hp-=1
+		$Hurt.set_emitting(true)
 		invincibility = true
 		$Timer.start()
+		emit_signal('Hurt')
 	if finished == true and hp==0:
 		hp = 5
 		get_tree().reload_current_scene()
@@ -194,9 +204,20 @@ func _physics_process(delta):
 	if floor_block == 7:
 		if hp!=maxhp:
 			hp+=1
+			$Healed.set_emitting(true)
+			emit_signal("Healed")
 		speed = 500
 	else:
 		speed = 300
+	#Crystal
+	if floor_block == 8:
+		if invincibility == false:
+			hp-=1
+			$Hurt.set_emitting(true)
+			emit_signal('Hurt')
+			invincibility = true
+			$Timer.start()
+		super_jump = true
 	#Math
 	emit_signal("Block", position.x, position.y)
 	emit_signal('Direction', facing)
@@ -251,3 +272,5 @@ func _on_Fire_body_entered(body):
 	print('test')
 	if hp!=maxhp:
 		hp+=1
+		$Healed.set_emitting(true)
+		emit_signal("Healed")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=2]
+[gd_scene load_steps=107 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/idle_right.png" type="Texture" id=2]
@@ -15,6 +15,11 @@
 [ext_resource path="res://Assets/left_death.png" type="Texture" id=13]
 [ext_resource path="res://Assets/death.png" type="Texture" id=14]
 [ext_resource path="res://Assets/spaceback.png" type="Texture" id=15]
+[ext_resource path="res://Assets/blinkstar2.png" type="Texture" id=16]
+[ext_resource path="res://Assets/blinkstar1.png" type="Texture" id=17]
+[ext_resource path="res://Assets/hp.png" type="Texture" id=18]
+[ext_resource path="res://Assets/hpbar.png" type="Texture" id=19]
+[ext_resource path="res://Scripts/HPBar.gd" type="Script" id=20]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -594,9 +599,48 @@ hue_variation_random = 1.0
 
 [node name="Coyote" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Hurt" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource( 16 )
+emission_shape = 1
+emission_sphere_radius = 20.0
+scale_amount = 0.2
+color = Color( 0.733333, 0, 0.0509804, 1 )
+
+[node name="Healed" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 5
+one_shot = true
+texture = ExtResource( 17 )
+emission_shape = 1
+emission_sphere_radius = 20.0
+gravity = Vector2( 0, -40 )
+color = Color( 0.0352941, 1, 0, 1 )
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = -32.0
+margin_top = -40.0
+margin_right = 32.0
+margin_bottom = -30.0
+max_value = 5.0
+value = 5.0
+texture_under = ExtResource( 19 )
+texture_progress = ExtResource( 18 )
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPTimer" type="Timer" parent="TextureProgress"]
 [connection signal="Air" from="." to="AnimatedSprite" method="_on_Player_Air"]
 [connection signal="Dead" from="." to="AnimatedSprite" method="_on_Player_Dead"]
 [connection signal="Ground" from="." to="AnimatedSprite" method="_on_Player_Ground"]
+[connection signal="Healed" from="." to="TextureProgress" method="_on_Player_Healed"]
+[connection signal="Hurt" from="." to="TextureProgress" method="_on_Player_Hurt"]
 [connection signal="Interact" from="." to="AnimatedSprite" method="_on_Player_Interact"]
 [connection signal="Jump" from="." to="AnimatedSprite" method="_on_Player_Jump"]
 [connection signal="Left" from="." to="AnimatedSprite" method="_on_Player_Left"]
@@ -609,3 +653,4 @@ wait_time = 0.5
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
 [connection signal="timeout" from="Coyote" to="." method="_on_Coyote_timeout"]
+[connection signal="timeout" from="TextureProgress/HPTimer" to="TextureProgress" method="_on_HPTimer_timeout"]

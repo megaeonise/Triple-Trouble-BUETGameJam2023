@@ -1,7 +1,7 @@
 extends Area2D
 
 var processed: bool = false
-var othertext: bool = false
+var othertext: int = 0
 
 func _process(delta):
 	if processed == false:
@@ -9,12 +9,9 @@ func _process(delta):
 		$Timer.start()
 
 func _on_Tutorial_body_entered(body):
-	if not othertext:
-		$RichTextLabel.set_text('Blades of grass hurt, water bounces, ice sticks. Interact to change the environment and be on your way.')
-		othertext = true
-	else:
-		othertext = false
-		$RichTextLabel.set_text('Take the red Breaker to blow away obstacles')
+	match othertext:
+		0:
+			$RichTextLabel.set_text('Lava heals, Crystal hurts. But Crystal gives you the power to jump high.')
 
 
 func _on_Tutorial_body_exited(body):

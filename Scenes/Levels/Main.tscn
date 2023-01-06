@@ -12,7 +12,7 @@
 
 [node name="Grass" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, 0 )
-tile_data = PoolIntArray( 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 327684, 0, 0, 327685, 1, 0, 327686, 0, 0, 327687, 1, 0, 327688, 0, 0, 327689, 1, 0, 393231, 4, 0, 393232, 4, 0, 393233, 4, 0, 458766, 4, 0, 524301, 4, 0, 589828, 3, 0, 589829, 3, 0, 589833, 2, 0, 589836, 4, 0 )
+tile_data = PoolIntArray( 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 327684, 0, 0, 327685, 1, 0, 327686, 0, 0, 327687, 1, 0, 327688, 0, 0, 327689, 1, 0, 393231, 4, 0, 393232, 4, 0, 393233, 4, 0, 589828, 3, 0, 589829, 3, 0, 589833, 2, 0, 589835, 8, 0, 589836, 7, 0, 589837, 8, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 312, 144 )
@@ -32,5 +32,5 @@ position = Vector2( 552, 152 )
 [connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]
 [connection signal="area_entered" from="DarkMatter" to="Player" method="_on_DarkMatter_area_entered"]
 [connection signal="body_entered" from="DarkMatter" to="Player" method="_on_DarkMatter_body_entered"]
-[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
