@@ -178,7 +178,6 @@ tile_data = PoolIntArray( 65538, 4, 0, 65539, 4, 1, 65551, 1, 0, 65558, 5, 0, 65
 
 [node name="Sun" parent="." instance=ExtResource( 10 )]
 position = Vector2( 464, 48 )
-frame = 0
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 448, 160 )
@@ -232,10 +231,10 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 32, 560 )
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
-[connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Fire" to="Player" method="_on_Fire_body_entered"]
 [connection signal="timeout" from="Title/Timer" to="Title" method="_on_Timer_timeout"]
 [connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]

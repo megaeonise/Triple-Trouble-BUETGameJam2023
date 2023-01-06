@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=2]
+[gd_scene load_steps=108 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/idle_right.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Assets/hp.png" type="Texture" id=18]
 [ext_resource path="res://Assets/hpbar.png" type="Texture" id=19]
 [ext_resource path="res://Scripts/HPBar.gd" type="Script" id=20]
+[ext_resource path="res://Assets/Sound/game over final.ogg" type="AudioStream" id=22]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -513,7 +514,6 @@ script = ExtResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 85 )
 animation = "Idle"
-frame = 1
 playing = true
 script = ExtResource( 4 )
 
@@ -865,6 +865,9 @@ color = Color( 1, 0, 0.109804, 1 )
 
 [node name="Des_Time6L" type="Timer" parent="DestructorL2"]
 wait_time = 0.5
+
+[node name="DeathPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
 [connection signal="Air" from="." to="AnimatedSprite" method="_on_Player_Air"]
 [connection signal="Dead" from="." to="AnimatedSprite" method="_on_Player_Dead"]
 [connection signal="Ground" from="." to="AnimatedSprite" method="_on_Player_Ground"]
@@ -894,3 +897,4 @@ wait_time = 0.5
 [connection signal="timeout" from="Destructor Impact Frame 2/Destructor Impact Impact Frame 2/Des_Time5" to="." method="_on_Des_Time5_timeout"]
 [connection signal="timeout" from="DestructorL Impact Frame 2/Des_Time4L" to="." method="_on_Des_Time4L_timeout"]
 [connection signal="timeout" from="DestructorL Impact Frame 2/DestructorL Impact Impact Frame 2/Des_Time5L" to="." method="_on_Des_Time5L_timeout"]
+[connection signal="finished" from="DeathPlayer" to="." method="_on_DeathPlayer_finished"]

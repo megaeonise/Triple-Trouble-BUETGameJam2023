@@ -21,6 +21,7 @@ var can_jump: bool = false
 var super_jump: bool = false
 var lava: bool = false
 var super_jump_ready: bool = false
+var dedsfx: bool = false
 #Signals
 signal Dead
 signal Ground
@@ -198,6 +199,9 @@ func _physics_process(delta):
 	#Death
 	if hp==0:
 		state=states[4]
+		if not dedsfx:
+			dedsfx = true
+			$DeathPlayer.play()
 		emit_signal('Dead')
 	if Input.is_action_just_pressed("die"):
 		hp = 0
@@ -368,3 +372,7 @@ func _on_Des_Time4L_timeout():
 func _on_Des_Time5L_timeout():
 	$DestructorL2.set_emitting(true)
 
+
+
+func _on_DeathPlayer_finished():
+	$DeathPlayer.stop()

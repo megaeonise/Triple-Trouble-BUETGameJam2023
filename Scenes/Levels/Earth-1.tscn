@@ -181,6 +181,7 @@ tile_data = PoolIntArray( 4, 1, 0, 65538, 4, 0, 65539, 4, 1, 65558, 5, 0, 65559,
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 position = Vector2( 824, 24 )
+frame = 2
 
 [node name="Fire" parent="." instance=ExtResource( 19 )]
 position = Vector2( 624, 584 )
@@ -248,8 +249,8 @@ one_shot = true
 position = Vector2( 272, 560 )
 [connection signal="ready" from="." to="." method="_on_Node2D_ready"]
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
-[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Fire" to="Player" method="_on_Fire_body_entered"]
 [connection signal="body_entered" from="Tutorial" to="Tutorial" method="_on_Tutorial_body_entered"]
 [connection signal="body_exited" from="Tutorial" to="Tutorial" method="_on_Tutorial_body_exited"]
