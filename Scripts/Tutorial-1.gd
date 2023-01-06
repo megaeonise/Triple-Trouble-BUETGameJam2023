@@ -12,10 +12,13 @@ func _on_Tutorial_body_entered(body):
 	match othertext:
 		0:
 			othertext = 1
-			$RichTextLabel.set_text('Lava heals, Crystal hurts. But Crystal gives you the power to jump high.')
+			$RichTextLabel.set_text("Space Rock is benign, but it's other state Crystal hurts you but lets you jump higher. Interact to shift them between their two states.")
 		1:
+			othertext = 2
+			$RichTextLabel.set_text('Lava heals and lets you move fast in the air.')
+		2:
 			othertext = 0
-			$RichTextLabel.set_text('Lava also lets you move fast.')
+			$RichTextLabel.set_text("If you can't find a way forward, try Interacting.")
 
 
 func _on_Tutorial_body_exited(body):

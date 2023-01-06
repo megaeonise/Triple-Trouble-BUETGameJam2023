@@ -3,4 +3,4 @@ extends Area2D
 
 
 func _on_Goal_body_entered(body):
-	get_tree().change_scene("res://Scenes/Levels/Final.tscn")
+	get_tree().change_scene("res://Scenes/Levels/Distortion-3.tscn")

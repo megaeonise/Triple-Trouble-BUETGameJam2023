@@ -1,5 +1,6 @@
 extends KinematicBody2D
 #Variables
+var minhp: int = 0
 var maxhp: int = 5
 var hp: int = 5
 var speed: int = 300
@@ -10,7 +11,7 @@ var states: Array = ['Ground', 'Air', 'Dash', 'Interact', 'Death', 'Blob']
 var state: String = states[0]
 var finished: bool = false
 var facing: bool = false
-var breaker: bool = false
+var breaker: int = 0
 var floor_block: int = -1
 var wall_block: int = -1
 var invincibility: bool = false
@@ -161,14 +162,20 @@ func get_input(delta):
 			finished = false
 			state = states[3]
 			emit_signal('Interact', false)
-		if Input.is_action_just_pressed("destroy") and breaker==true:
+		if Input.is_action_just_pressed("destroy") and breaker>0:
 			finished = false
 			state = states[3]
 			emit_signal('Interact', breaker)
-			breaker = false
+			breaker -= 1
 			$CPUParticles2D.set_emitting(false)
-		elif Input.is_action_pressed("destroy") and breaker==false:
-			$RichTextLabel2.set_bbcode("[center]No Breaker[/center]")
+			if not facing:
+				$Destructor1.set_emitting(true)
+				$Destructor1/Des_Time1.start()
+			else:
+				$DestructorL1.set_emitting(true)
+				$DestructorL1/Des_Time1L.start()
+		elif Input.is_action_pressed("destroy") and breaker==0:
+			$RichTextLabel2.set_bbcode("[center]No Destructor[/center]")
 			$RichTextLabel2/Background.set_visible(true)
 			$Timer2.start()
 	
@@ -181,12 +188,12 @@ func _physics_process(delta):
 	print(hp)
 	get_input(delta)
 	#Powered-Up
-	if breaker:
+	if breaker>0:
 		$CPUParticles2D.set_emitting(true)
 		if can_emit:
 			$RichTextLabel/Background.set_visible(true)
 			$CPUParticles2D2.set_emitting(true)
-			$RichTextLabel.set_bbcode("[center]Breaker obtained. You've only one shot.[/center]")
+			$RichTextLabel.set_bbcode("[center]Destructor obtained. You've only one shot.[/center]")
 			
 	#Death
 	if hp==0:
@@ -195,7 +202,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("die"):
 		hp = 0
 	#Damage
-	if floor_block == 0 and invincibility == false and hp!=0:
+	if floor_block == 0 and invincibility == false and hp>0:
 		hp-=1
 		$Hurt.set_emitting(true)
 		invincibility = true
@@ -232,11 +239,12 @@ func _physics_process(delta):
 	#Crystal
 	if floor_block == 8:
 		if invincibility == false:
-			hp-=1
-			$Hurt.set_emitting(true)
-			emit_signal('Hurt')
-			invincibility = true
-			$Timer.start()
+			if hp>0:
+				hp-=1
+				$Hurt.set_emitting(true)
+				emit_signal('Hurt')
+				invincibility = true
+				$Timer.start()
 		if not super_jump_ready:
 			super_jump = true
 			super_jump_ready = true
@@ -268,7 +276,7 @@ func _on_DarkMatter_body_entered(body):
 
 #Powering up
 func _on_Breaker_body_entered(body):
-	breaker = true
+	breaker += 1
 	can_emit = true
 	$Timer2.start()
 	
@@ -312,3 +320,51 @@ func _on_Death_Plane_body_entered(body):
 
 func _on_CrystalTimer_timeout():
 	super_jump_ready = false
+
+
+func _on_Des_Time1_timeout():
+	$"Destructor Impact Frame 1".set_emitting(true)
+	$"Destructor Impact Frame 1/Des_Time2".start()
+
+
+func _on_Des_Time2_timeout():
+	$"Destructor Impact Frame 1/Destructor Impact Impact Frame 1".set_emitting(true)
+	$"Destructor Impact Frame 1/Destructor Impact Impact Frame 1/Des_Time3".start()
+
+
+func _on_Des_Time3_timeout():
+	$"Destructor Impact Frame 2".set_emitting(true)
+	$"Destructor Impact Frame 2/Des_Time4".start()
+
+
+func _on_Des_Time4_timeout():
+	$"Destructor Impact Frame 2/Destructor Impact Impact Frame 2".set_emitting(true)
+	$"Destructor Impact Frame 2/Destructor Impact Impact Frame 2/Des_Time5".start()
+
+
+func _on_Des_Time5_timeout():
+	$Destructor2.set_emitting(true)
+	
+func _on_Des_Time1L_timeout():
+	$"DestructorL Impact Frame 1".set_emitting(true)
+	$"DestructorL Impact Frame 1/Des_Time2L".start()
+
+
+func _on_Des_Time2L_timeout():
+	$"DestructorL Impact Frame 1/DestructorL Impact Impact Frame 1".set_emitting(true)
+	$"DestructorL Impact Frame 1/DestructorL Impact Impact Frame 1/Des_Time3L".start()
+
+
+func _on_Des_Time3L_timeout():
+	$"DestructorL Impact Frame 2".set_emitting(true)
+	$"DestructorL Impact Frame 2/Des_Time4L".start()
+
+
+func _on_Des_Time4L_timeout():
+	$"DestructorL Impact Frame 2/DestructorL Impact Impact Frame 2".set_emitting(true)
+	$"DestructorL Impact Frame 2/DestructorL Impact Impact Frame 2/Des_Time5L".start()
+
+
+func _on_Des_Time5L_timeout():
+	$DestructorL2.set_emitting(true)
+

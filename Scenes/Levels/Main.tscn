@@ -26,6 +26,12 @@ script = SubResource( 1 )
 
 [node name="Breaker" parent="." instance=ExtResource( 5 )]
 position = Vector2( 552, 152 )
+
+[node name="Breaker2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 600, 152 )
+
+[node name="Breaker3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 496, 152 )
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
 [connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]
 [connection signal="Direction" from="Player" to="Grass" method="_on_Player_Direction"]
@@ -34,3 +40,7 @@ position = Vector2( 552, 152 )
 [connection signal="body_entered" from="DarkMatter" to="Player" method="_on_DarkMatter_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker3" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker3" to="Breaker3" method="_on_Breaker_body_entered"]
