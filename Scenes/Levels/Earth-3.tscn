@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/boc.tscn" type="PackedScene" id=2]
@@ -17,6 +17,9 @@
 [ext_resource path="res://Scenes/Goal3.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Star.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Scenes/RainbowStars.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scripts/Title.gd" type="Script" id=18]
+[ext_resource path="res://Assets/Fonts/Big Pixel Light demo.otf" type="DynamicFontData" id=19]
+[ext_resource path="res://Assets/Star.tres" type="Texture" id=20]
 
 [sub_resource type="TileSet" id=1]
 0/name = "sun.png 0"
@@ -145,6 +148,27 @@
 6/shape_one_way_margin = 0.0
 6/shapes = [  ]
 6/z_index = 0
+7/name = "Star.tres 7"
+7/texture = ExtResource( 20 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 32, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 19 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -167,10 +191,11 @@ position = Vector2( 48, 80 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 65561, 1, 0 )
+tile_data = PoolIntArray( 9, 7, 0, 24, 7, 0, 30, 7, 0, 65538, 7, 0, 65543, 7, 0, 65552, 7, 0, 65556, 7, 0, 65561, 1, 0, 65564, 7, 0, 65565, 7, 0, 131097, 7, 0, 131102, 7, 0, 196631, 7, 0 )
 
 [node name="Sun" parent="." instance=ExtResource( 10 )]
 position = Vector2( 216, 40 )
+frame = 2
 
 [node name="Breaker" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1008, 24 )
@@ -183,41 +208,75 @@ script = ExtResource( 4 )
 
 [node name="Star" parent="." instance=ExtResource( 16 )]
 position = Vector2( -16, 72 )
-frame = 1
 offset = Vector2( 451.765, -150.588 )
 
 [node name="Star2" parent="." instance=ExtResource( 16 )]
 position = Vector2( 216, 72 )
-frame = 1
 offset = Vector2( 451.765, -150.588 )
 
 [node name="Star3" parent="." instance=ExtResource( 16 )]
 position = Vector2( 512, 56 )
-frame = 1
 offset = Vector2( -180.706, -90.353 )
 
 [node name="Star4" parent="." instance=ExtResource( 16 )]
 position = Vector2( 288, 16 )
-frame = 1
 offset = Vector2( -60.2353, 0 )
 
 [node name="Star5" parent="." instance=ExtResource( 16 )]
 position = Vector2( 656, 24 )
-frame = 1
 offset = Vector2( -60.2353, 0 )
 
 [node name="Star6" parent="." instance=ExtResource( 16 )]
 position = Vector2( 912, 40 )
-frame = 1
 offset = Vector2( -60.2353, 0 )
 
 [node name="Star7" parent="." instance=ExtResource( 16 )]
 position = Vector2( 744, 88 )
-frame = 1
 offset = Vector2( -60.2353, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 32, 560 )
+
+[node name="Title" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 512, 288 )
+scale = Vector2( 1, 1.05263 )
+texture = ExtResource( 11 )
+script = ExtResource( 18 )
+
+[node name="Particle" type="CPUParticles2D" parent="Title"]
+emitting = false
+amount = 100
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 300, 300 )
+gravity = Vector2( 0, -50 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[node name="Timer" type="Timer" parent="Title"]
+wait_time = 3.0
+autostart = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Title"]
+margin_left = -160.0
+margin_top = -68.4
+margin_right = 168.0
+margin_bottom = 75.6
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
+bbcode_text = "
+[center]Earth-3[/center]"
+text = "
+Earth-3"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
 [connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
@@ -226,3 +285,4 @@ position = Vector2( 32, 560 )
 [connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]
 [connection signal="Direction" from="Player" to="Grass" method="_on_Player_Direction"]
 [connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]
+[connection signal="timeout" from="Title/Timer" to="Title" method="_on_Timer_timeout"]

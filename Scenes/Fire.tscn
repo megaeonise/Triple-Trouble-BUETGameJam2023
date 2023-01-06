@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/flame.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 8 )
+extents = Vector2( 16, 16 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
@@ -31,13 +31,13 @@ animations = [ {
 [node name="Fire" type="Area2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 8 )
+position = Vector2( 0, -24 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -4.76837e-07 )
+position = Vector2( 0, -8 )
 frames = SubResource( 5 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

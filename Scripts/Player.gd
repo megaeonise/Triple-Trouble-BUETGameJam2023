@@ -1,5 +1,6 @@
 extends KinematicBody2D
 #Variables
+var maxhp: int = 5
 var hp: int = 5
 var speed: int = 300
 var jumpspeed: int = -200
@@ -14,6 +15,8 @@ var floor_block: int = -1
 var wall_block: int = -1
 var invincibility: bool = false
 var timer: bool = false
+var can_emit: bool = false
+var can_jump: bool = false
 #Signals
 signal Dead
 signal Ground
@@ -27,6 +30,8 @@ signal Jump
 signal Interact(breaker)
 signal Block(x, y)
 signal Direction(facing)
+signal Hurt
+signal Healed
 
 #Controls
 func get_input(delta):
@@ -34,13 +39,16 @@ func get_input(delta):
 	velocity.x = 0
 	#Setting Ground state after returning from Air
 	if is_on_floor() and state == states[1] and not state in states.slice(2,5):
+		can_jump = true
 		state = states[0]
 		emit_signal('Ground')
 		$AnimatedSprite.visible = true
 	#Setting Air state after falling
 	if is_on_floor()!=true and not state in states.slice(2,5):
-		state = states[1]
-		emit_signal('Air')
+		$Coyote.start()
+		if not can_jump:
+			state = states[1]
+			emit_signal('Air')
 		$AnimatedSprite.visible = true
 	if state == states[5]:
 		velocity.x = 0
@@ -135,6 +143,11 @@ func get_input(delta):
 			state = states[3]
 			emit_signal('Interact', breaker)
 			breaker = false
+			$CPUParticles2D.set_emitting(false)
+		elif Input.is_action_pressed("destroy") and breaker==false:
+			$RichTextLabel2.set_bbcode("[center]No Breaker[/center]")
+			$RichTextLabel2/Background.set_visible(true)
+			$Timer2.start()
 	
 	#Gravity
 	velocity.y += gravity * delta
@@ -142,7 +155,16 @@ func get_input(delta):
 	
 #Driver code
 func _physics_process(delta):
+	print(hp)
 	get_input(delta)
+	#Powered-Up
+	if breaker:
+		$CPUParticles2D.set_emitting(true)
+		if can_emit:
+			$RichTextLabel/Background.set_visible(true)
+			$CPUParticles2D2.set_emitting(true)
+			$RichTextLabel.set_bbcode("[center]Breaker obtained. You've only one shot.[/center]")
+			
 	#Death
 	if hp==0:
 		state=states[4]
@@ -168,6 +190,13 @@ func _physics_process(delta):
 		speed = 100
 	else:
 		speed = 300
+	#Lava
+	if floor_block == 7:
+		if hp!=maxhp:
+			hp+=1
+		speed = 500
+	else:
+		speed = 300
 	#Math
 	emit_signal("Block", position.x, position.y)
 	emit_signal('Direction', facing)
@@ -191,6 +220,8 @@ func _on_DarkMatter_body_entered(body):
 #Powering up
 func _on_Breaker_body_entered(body):
 	breaker = true
+	can_emit = true
+	$Timer2.start()
 	
 
 #Grass script is every interactable block script fyi, too scared to change name
@@ -202,3 +233,21 @@ func _on_Grass_blocks(f_block, w_block):
 func _on_Timer_timeout():
 	invincibility = false
 	timer = false
+
+
+func _on_Timer2_timeout():
+	can_emit = false
+	$RichTextLabel.set_text("")
+	$RichTextLabel/Background.set_visible(false)
+	$RichTextLabel2.set_text("")
+	$RichTextLabel2/Background.set_visible(false)
+
+
+func _on_Coyote_timeout():
+	can_jump=false
+
+
+func _on_Fire_body_entered(body):
+	print('test')
+	if hp!=maxhp:
+		hp+=1

@@ -3,7 +3,7 @@
 [node name="RainbowStars" type="CPUParticles2D"]
 position = Vector2( 456, 72 )
 amount = 35
-speed_scale = 0.1
+speed_scale = 0.05
 emission_shape = 2
 emission_rect_extents = Vector2( 280, 50 )
 gravity = Vector2( 0, 0 )

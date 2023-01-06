@@ -17,7 +17,9 @@ _global_script_class_icons={
 
 config/name="Buet Game Jam 2023"
 run/main_scene="res://Scenes/Levels/Main.tscn"
-config/icon="res://icon.png"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Moonfire"
+config/icon="res://Assets/moon ph1.png"
 
 [display]
 
