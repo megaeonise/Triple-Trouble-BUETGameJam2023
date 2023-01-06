@@ -91,8 +91,8 @@ __meta__ = {
 "_editor_description_": ""
 }
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
-[connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
 [connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]
 [connection signal="Direction" from="Player" to="Grass" method="_on_Player_Direction"]
 [connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]

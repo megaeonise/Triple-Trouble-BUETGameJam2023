@@ -19,6 +19,7 @@ var can_emit: bool = false
 var can_jump: bool = false
 var super_jump: bool = false
 var lava: bool = false
+var super_jump_ready: bool = false
 #Signals
 signal Dead
 signal Ground
@@ -236,7 +237,10 @@ func _physics_process(delta):
 			emit_signal('Hurt')
 			invincibility = true
 			$Timer.start()
-		super_jump = true
+		if not super_jump_ready:
+			super_jump = true
+			super_jump_ready = true
+			$CrystalTimer.start()
 	if super_jump:
 		$Crystal.set_emitting(true)
 		emit_signal("Crystal")
@@ -304,3 +308,7 @@ func _on_Fire_body_entered(body):
 
 func _on_Death_Plane_body_entered(body):
 	hp=0
+
+
+func _on_CrystalTimer_timeout():
+	super_jump_ready = false

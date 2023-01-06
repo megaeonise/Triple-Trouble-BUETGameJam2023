@@ -513,6 +513,7 @@ script = ExtResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 85 )
 animation = "Idle"
+frame = 3
 playing = true
 script = ExtResource( 4 )
 
@@ -668,6 +669,8 @@ __meta__ = {
 }
 
 [node name="HPTimer" type="Timer" parent="TextureProgress"]
+
+[node name="CrystalTimer" type="Timer" parent="."]
 [connection signal="Air" from="." to="AnimatedSprite" method="_on_Player_Air"]
 [connection signal="Dead" from="." to="AnimatedSprite" method="_on_Player_Dead"]
 [connection signal="Ground" from="." to="AnimatedSprite" method="_on_Player_Ground"]
@@ -686,3 +689,4 @@ __meta__ = {
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
 [connection signal="timeout" from="Coyote" to="." method="_on_Coyote_timeout"]
 [connection signal="timeout" from="TextureProgress/HPTimer" to="TextureProgress" method="_on_HPTimer_timeout"]
+[connection signal="timeout" from="CrystalTimer" to="." method="_on_CrystalTimer_timeout"]
