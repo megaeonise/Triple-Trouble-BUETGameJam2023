@@ -18,6 +18,7 @@ var timer: bool = false
 var can_emit: bool = false
 var can_jump: bool = false
 var super_jump: bool = false
+var lava: bool = false
 #Signals
 signal Dead
 signal Ground
@@ -33,7 +34,8 @@ signal Block(x, y)
 signal Direction(facing)
 signal Hurt
 signal Healed
-
+signal Crystal
+signal Lava
 #Controls
 func get_input(delta):
 	#Initial Velocity
@@ -100,32 +102,46 @@ func get_input(delta):
 			else:
 				emit_signal("Stop")
 		elif state==states[1]:
-			#Right Move
-			if Input.is_action_pressed("move_right"):
-				facing = false
-				velocity.x += speed-200
-				emit_signal('Right')
-			#Left Move
-			elif Input.is_action_pressed("move_left"):
-				facing = true
-				velocity.x -= speed-200
-				emit_signal('Left')
-			#Stop Signal
+			if lava:
+				emit_signal("Lava")
+				#Right Move
+				if Input.is_action_pressed("move_right"):
+					facing = false
+					velocity.x += 500
+					emit_signal('Right')
+				#Left Move
+				elif Input.is_action_pressed("move_left"):
+					facing = true
+					velocity.x -= 500
+					emit_signal('Left')
+				#Stop Signal
+				else:
+					emit_signal("Stop")
 			else:
-				emit_signal("Stop")
+				#Right Move
+				if Input.is_action_pressed("move_right"):
+					facing = false
+					velocity.x += speed-200
+					emit_signal('Right')
+				#Left Move
+				elif Input.is_action_pressed("move_left"):
+					facing = true
+					velocity.x -= speed-200
+					emit_signal('Left')
+				#Stop Signal
+				else:
+					emit_signal("Stop")
 		#Right Dash
 		if Input.is_action_just_pressed("dash") and Input.is_action_pressed('move_right'):
 			#Right Ground Dash
 			if state == states[0]:
 				emit_signal('Right_Dash')
-				velocity.x = 0
 				velocity.x += 5000
 
 			#Right Air Dash
 			else:
 				state = states[2]
 				emit_signal('Right_Dash')
-				velocity.x = 0
 				velocity.x += 5000
 		
 		#Left Dash
@@ -133,13 +149,11 @@ func get_input(delta):
 			#Left Ground Dash
 			if state == states[0]:
 				emit_signal('Left_Dash')
-				velocity.x = 0
 				velocity.x -= 5000
 			#Left Air Dash
 			else:
 				state = states[2]
 				emit_signal('Left_Dash')
-				velocity.x = 0
 				velocity.x -= 5000
 		#Interact
 		if Input.is_action_just_pressed("interact"):
@@ -194,7 +208,7 @@ func _physics_process(delta):
 		timer=true
 		$Timer.start()
 		velocity.y -= 500
-		print(velocity.y)
+		$Water.set_emitting(true)
 	#Icestick
 	if floor_block == 3:
 		speed = 100
@@ -207,8 +221,13 @@ func _physics_process(delta):
 			$Healed.set_emitting(true)
 			emit_signal("Healed")
 		speed = 500
+		lava = true
+		$Lava.set_emitting(true)
+		$Timer2.start()
 	else:
 		speed = 300
+	if not lava:
+		$Lava.set_emitting(false)
 	#Crystal
 	if floor_block == 8:
 		if invincibility == false:
@@ -218,6 +237,11 @@ func _physics_process(delta):
 			invincibility = true
 			$Timer.start()
 		super_jump = true
+	if super_jump:
+		$Crystal.set_emitting(true)
+		emit_signal("Crystal")
+	else:
+		$Crystal.set_emitting(false)
 	#Math
 	emit_signal("Block", position.x, position.y)
 	emit_signal('Direction', facing)
@@ -257,11 +281,14 @@ func _on_Timer_timeout():
 
 
 func _on_Timer2_timeout():
-	can_emit = false
-	$RichTextLabel.set_text("")
-	$RichTextLabel/Background.set_visible(false)
-	$RichTextLabel2.set_text("")
-	$RichTextLabel2/Background.set_visible(false)
+	if lava:
+		lava = false
+	else:
+		can_emit = false
+		$RichTextLabel.set_text("")
+		$RichTextLabel/Background.set_visible(false)
+		$RichTextLabel2.set_text("")
+		$RichTextLabel2/Background.set_visible(false)
 
 
 func _on_Coyote_timeout():
@@ -269,8 +296,11 @@ func _on_Coyote_timeout():
 
 
 func _on_Fire_body_entered(body):
-	print('test')
 	if hp!=maxhp:
 		hp+=1
 		$Healed.set_emitting(true)
 		emit_signal("Healed")
+
+
+func _on_Death_Plane_body_entered(body):
+	hp=0

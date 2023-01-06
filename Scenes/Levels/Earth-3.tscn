@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/boc.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Scripts/Title.gd" type="Script" id=18]
 [ext_resource path="res://Assets/Fonts/Big Pixel Light demo.otf" type="DynamicFontData" id=19]
 [ext_resource path="res://Assets/Star.tres" type="Texture" id=20]
+[ext_resource path="res://Scenes/Fire.tscn" type="PackedScene" id=21]
 
 [sub_resource type="TileSet" id=1]
 0/name = "sun.png 0"
@@ -174,7 +175,7 @@ font_data = ExtResource( 19 )
 
 [node name="city" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 512, 288 )
+position = Vector2( 512, 296 )
 texture = ExtResource( 11 )
 
 [node name="Grass" parent="." instance=ExtResource( 3 )]
@@ -195,7 +196,7 @@ tile_data = PoolIntArray( 9, 7, 0, 24, 7, 0, 30, 7, 0, 65538, 7, 0, 65543, 7, 0,
 
 [node name="Sun" parent="." instance=ExtResource( 10 )]
 position = Vector2( 216, 40 )
-frame = 2
+frame = 0
 
 [node name="Breaker" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1008, 24 )
@@ -237,8 +238,10 @@ offset = Vector2( -60.2353, 0 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 32, 560 )
 
+[node name="Fire" parent="." instance=ExtResource( 21 )]
+position = Vector2( 720, 592 )
+
 [node name="Title" type="Sprite" parent="."]
-visible = false
 self_modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 512, 288 )
 scale = Vector2( 1, 1.05263 )
@@ -278,11 +281,12 @@ __meta__ = {
 "_editor_description_": ""
 }
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
-[connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]
 [connection signal="Direction" from="Player" to="Grass" method="_on_Player_Direction"]
 [connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]
+[connection signal="body_entered" from="Fire" to="Player" method="_on_Fire_body_entered"]
 [connection signal="timeout" from="Title/Timer" to="Title" method="_on_Timer_timeout"]

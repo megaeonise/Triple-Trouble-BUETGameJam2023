@@ -11,7 +11,11 @@ func _process(delta):
 func _on_Tutorial_body_entered(body):
 	match othertext:
 		0:
+			othertext = 1
 			$RichTextLabel.set_text('Lava heals, Crystal hurts. But Crystal gives you the power to jump high.')
+		1:
+			othertext = 0
+			$RichTextLabel.set_text('Lava also lets you move fast.')
 
 
 func _on_Tutorial_body_exited(body):
