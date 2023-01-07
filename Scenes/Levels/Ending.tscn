@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Scenes/RainbowStars.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Grass.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Assets/Font.tres" type="DynamicFont" id=16]
 [ext_resource path="res://Scripts/FinalGoal.gd" type="Script" id=17]
 [ext_resource path="res://Assets/spaceback.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sound/EarthPlayer.tscn" type="PackedScene" id=19]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -26,57 +27,57 @@ region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
-atlas = ExtResource( 12 )
+atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 15 )
-region = Rect2( 0, 0, 32, 32 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
-atlas = ExtResource( 15 )
-region = Rect2( 32, 0, 32, 32 )
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 32, 32 )
+atlas = ExtResource( 13 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
-atlas = ExtResource( 13 )
+atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
-atlas = ExtResource( 13 )
-region = Rect2( 32, 0, 32, 32 )
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
-atlas = ExtResource( 9 )
+atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 0, 0, 32, 32 )
+atlas = ExtResource( 14 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
-atlas = ExtResource( 14 )
+atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
-atlas = ExtResource( 14 )
-region = Rect2( 32, 0, 32, 32 )
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
-atlas = ExtResource( 15 )
+atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=13]
@@ -86,39 +87,39 @@ animations = [ {
 "name": "1FStatic",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 2 ) ],
-"loop": true,
-"name": "2FStatic",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
 "name": "3 Flame",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 5 ) ],
-"loop": true,
-"name": "NFStatic",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "1 Flame",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 9 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "No Flame",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 10 ), SubResource( 11 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "2 Flame",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 12 ) ],
+"frames": [ SubResource( 10 ) ],
+"loop": true,
+"name": "NFStatic",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 11 ) ],
 "loop": true,
 "name": "3FStatic",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 12 ) ],
+"loop": true,
+"name": "2FStatic",
 "speed": 5.0
 } ]
 
@@ -139,6 +140,8 @@ Set the moon ablaze; Find and shoot the cannons. Cyantext
 and
 Dont waste your Destructors,, lest you have to journey through this Sea again"
 }
+
+[node name="EarthPlayer" parent="." instance=ExtResource( 19 )]
 
 [node name="spaceback" type="Sprite" parent="."]
 self_modulate = Color( 0.686275, 0, 1, 0.901961 )
@@ -277,14 +280,14 @@ shape = SubResource( 16 )
 [connection signal="Moonhurt" from="Player" to="Moon" method="_on_Player_Moonhurt"]
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_Goal_body_entered"]
 [connection signal="timeout" from="Goal/Timer" to="Goal" method="_on_Timer_timeout"]
-[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker3" to="Breaker3" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker3" to="Player" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Breaker4" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker4" to="Breaker4" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker4" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Death Plane" to="Player" method="_on_Death_Plane_body_entered"]
 [connection signal="body_entered" from="Death Plane2" to="Player" method="_on_Death_Plane_body_entered"]
 [connection signal="body_entered" from="Death Plane2" to="Player" method="_on_Death_Plane2_body_entered"]

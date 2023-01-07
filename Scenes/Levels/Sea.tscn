@@ -35,57 +35,57 @@ region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
-atlas = ExtResource( 19 )
+atlas = ExtResource( 22 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 22 )
-region = Rect2( 0, 0, 32, 32 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
-atlas = ExtResource( 22 )
-region = Rect2( 32, 0, 32, 32 )
+atlas = ExtResource( 20 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
-atlas = ExtResource( 14 )
-region = Rect2( 0, 0, 32, 32 )
+atlas = ExtResource( 20 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
-atlas = ExtResource( 20 )
+atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
-atlas = ExtResource( 20 )
-region = Rect2( 32, 0, 32, 32 )
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
-atlas = ExtResource( 14 )
+atlas = ExtResource( 21 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
-atlas = ExtResource( 17 )
-region = Rect2( 0, 0, 32, 32 )
+atlas = ExtResource( 21 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
-atlas = ExtResource( 21 )
+atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
-atlas = ExtResource( 21 )
-region = Rect2( 32, 0, 32, 32 )
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
-atlas = ExtResource( 22 )
+atlas = ExtResource( 19 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=13]
@@ -95,55 +95,55 @@ animations = [ {
 "name": "1FStatic",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 2 ) ],
-"loop": true,
-"name": "2FStatic",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
 "name": "3 Flame",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 5 ) ],
-"loop": true,
-"name": "NFStatic",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "1 Flame",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 9 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "No Flame",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 10 ), SubResource( 11 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "2 Flame",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 12 ) ],
+"frames": [ SubResource( 10 ) ],
+"loop": true,
+"name": "NFStatic",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 11 ) ],
 "loop": true,
 "name": "3FStatic",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 12 ) ],
+"loop": true,
+"name": "2FStatic",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 3.20001, 1.77778 )
 
-[sub_resource type="RectangleShape2D" id=18]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 96, 8 )
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 32, 8 )
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 2912, 40 )
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 2392, 48 )
 
 [node name="Sea" type="Node2D"]
@@ -331,7 +331,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial2"]
 position = Vector2( 64, -24 )
-shape = SubResource( 18 )
+shape = SubResource( 15 )
 
 [node name="Timer" type="Timer" parent="Tutorial2"]
 wait_time = 5.0
@@ -357,7 +357,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CTut1"]
 position = Vector2( 0, -24 )
-shape = SubResource( 18 )
+shape = SubResource( 15 )
 
 [node name="Timer" type="Timer" parent="CTut1"]
 wait_time = 5.0
@@ -382,7 +382,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CTut2"]
 position = Vector2( -96, 80 )
-shape = SubResource( 18 )
+shape = SubResource( 15 )
 
 [node name="Timer" type="Timer" parent="CTut2"]
 wait_time = 5.0
@@ -408,7 +408,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CTut3"]
 position = Vector2( -96, 80 )
-shape = SubResource( 18 )
+shape = SubResource( 15 )
 
 [node name="Timer" type="Timer" parent="CTut3"]
 wait_time = 5.0
@@ -437,7 +437,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial"]
 visible = false
 position = Vector2( 0, -24 )
-shape = SubResource( 17 )
+shape = SubResource( 16 )
 
 [node name="Timer" type="Timer" parent="Tutorial"]
 wait_time = 7.0
@@ -448,14 +448,14 @@ position = Vector2( 512, 720 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death Plane"]
 position = Vector2( -96, 544 )
-shape = SubResource( 15 )
+shape = SubResource( 17 )
 
 [node name="Death Plane2" type="Area2D" parent="."]
 position = Vector2( 512, 720 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death Plane2"]
 position = Vector2( -912, 24 )
-shape = SubResource( 16 )
+shape = SubResource( 18 )
 
 [node name="Title" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 1 )
