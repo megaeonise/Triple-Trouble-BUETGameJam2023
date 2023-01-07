@@ -24,7 +24,11 @@ var super_jump_ready: bool = false
 var dedsfx: bool = false
 var jumpsfx: bool = false
 var dashsfx: bool = false
+var intsfx: bool = false
 var ice: bool = false
+var moon: bool = false
+var dirt: bool = false
+var grass: bool = false
 var t_grav: int = 0
 var t_x: int = 0
 var t_y: int = 0
@@ -58,6 +62,9 @@ func get_input(delta):
 		can_jump = true
 		state = states[0]
 		ice = false
+		moon = false
+		dirt = false
+		grass = false
 		emit_signal('Ground')
 		$AnimatedSprite.visible = true
 	#Setting Air state after falling
@@ -180,6 +187,7 @@ func get_input(delta):
 				velocity.x -= 5000
 		#Interact
 		if Input.is_action_just_pressed("interact"):
+			$InteractPlayer.play()
 			finished = false
 			state = states[3]
 			emit_signal('Interact', false)
@@ -238,7 +246,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("die"):
 		hp = 0
 	#Damage
-	if floor_block == 0 and invincibility == false and hp>0:
+	if (floor_block == 0 or floor_block == 16) and invincibility == false and hp>0:
 		hp-=1
 		$Hurt.set_emitting(true)
 		invincibility = true
@@ -263,7 +271,7 @@ func _physics_process(delta):
 	else:
 		speed = 300
 	#Lava
-	if floor_block == 7:
+	if (floor_block == 7 or floor_block == 14):
 		if hp!=maxhp:
 			$LavaPlayer.play()
 			hp+=1
@@ -279,7 +287,7 @@ func _physics_process(delta):
 	if not lava:
 		$Lava.set_emitting(false)
 	#Crystal
-	if floor_block == 8:
+	if (floor_block == 8 or floor_block == 11):
 		if invincibility == false:
 			if hp>0:
 				hp-=1
@@ -297,6 +305,20 @@ func _physics_process(delta):
 		emit_signal("Crystal")
 	else:
 		$Crystal.set_emitting(false)
+	#Moon Rock
+	if floor_block in [6,9,15]:
+		if not moon:
+			moon = true
+			$MoonRPlayer.play()
+	#Dirt
+	if floor_block in [12,5,4]:
+		if not dirt:
+			dirt = true
+			$DirtPlayer.play()
+	if floor_block in [0,1,13,16]:
+		if not grass:
+			grass= true
+			$GrassPlayer.play()
 	#Math
 	emit_signal("Block", position.x, position.y)
 	emit_signal('Direction', facing)
@@ -458,3 +480,7 @@ func _on_Des_Time6L_timeout():
 	t_j = 0
 	
 
+
+
+func _on_InteractPlayer_finished():
+	intsfx = false

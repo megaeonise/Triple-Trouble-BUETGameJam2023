@@ -13,7 +13,7 @@
 
 [node name="Grass" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, 0 )
-tile_data = PoolIntArray( 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 327684, 0, 0, 327685, 1, 0, 327686, 0, 0, 327687, 1, 0, 327688, 0, 0, 327689, 1, 0, 393231, 4, 0, 393232, 4, 0, 393233, 4, 0, 589828, 3, 0, 589829, 3, 0, 589833, 2, 0, 589835, 8, 0, 589836, 7, 0, 589837, 8, 0 )
+tile_data = PoolIntArray( 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 327684, 0, 0, 327685, 1, 0, 327686, 0, 0, 327687, 1, 0, 327688, 0, 0, 327689, 1, 0, 393231, 4, 0, 393232, 4, 0, 393233, 4, 0, 393234, 9, 0, 393235, 15, 0, 393236, 6, 0, 589828, 3, 0, 589829, 3, 0, 589833, 2, 0, 589835, 8, 0, 589836, 7, 0, 589837, 8, 0, 589848, 11, 0, 589849, 13, 0, 589850, 12, 0, 589851, 14, 0, 589852, 15, 0, 589853, 16, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 312, 144 )
@@ -42,9 +42,9 @@ position = Vector2( 616, 288 )
 [connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]
 [connection signal="area_entered" from="DarkMatter" to="Player" method="_on_DarkMatter_area_entered"]
 [connection signal="body_entered" from="DarkMatter" to="Player" method="_on_DarkMatter_body_entered"]
-[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker3" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker3" to="Breaker3" method="_on_Breaker_body_entered"]
