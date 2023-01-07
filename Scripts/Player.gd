@@ -25,10 +25,10 @@ var dedsfx: bool = false
 var jumpsfx: bool = false
 var dashsfx: bool = false
 var intsfx: bool = false
-var ice: bool = false
-var moon: bool = false
-var dirt: bool = false
-var grass: bool = false
+var ice: bool = true
+var moon: bool = true
+var dirt: bool = true
+var grass: bool = true
 var t_grav: int = 0
 var t_x: int = 0
 var t_y: int = 0
@@ -145,12 +145,12 @@ func get_input(delta):
 				#Right Move
 				if Input.is_action_pressed("move_right"):
 					facing = false
-					velocity.x += speed*0.7
+					velocity.x += speed*0.5
 					emit_signal('Right')
 				#Left Move
 				elif Input.is_action_pressed("move_left"):
 					facing = true
-					velocity.x -= speed*0.7
+					velocity.x -= speed*0.5
 					emit_signal('Left')
 				#Stop Signal
 				else:
@@ -227,7 +227,7 @@ func get_input(delta):
 	
 #Driver code
 func _physics_process(delta):
-	print($Destroball.is_emitting())
+	print(speed,' ' ,floor_block)
 	get_input(delta)
 	#Powered-Up
 	if breaker>0:
@@ -256,22 +256,20 @@ func _physics_process(delta):
 		hp = 5
 		get_tree().reload_current_scene()
 	#Bounce
-	if floor_block == 10 and timer==false:
+	if (floor_block == 10 or floor_block == 18) and timer==false:
 		timer=true
 		$Timer.start()
 		velocity.y -= 500
 		$WaterPlayer.play()
 		$Water.set_emitting(true)
 	#Icestick
-	if floor_block == 3:
+	if floor_block == 3 or floor_block == 17:
 		speed = 100
 		if not ice:
 			ice = true
 			$IcePlayer.play()
-	else:
-		speed = 300
 	#Lava
-	if (floor_block == 7 or floor_block == 14):
+	elif (floor_block == 7 or floor_block == 14):
 		if hp!=maxhp:
 			$LavaPlayer.play()
 			hp+=1

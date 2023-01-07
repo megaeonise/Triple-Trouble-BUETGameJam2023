@@ -67,6 +67,10 @@ func _on_Player_Interact(breaker):
 						set_cell(local.x-1, local.y, 16)
 					16:
 						set_cell(local.x-1, local.y, 13)
+					17:
+						set_cell(local.x-1, local.y, 18)
+					18:
+						set_cell(local.x-1, local.y, 17)
 			else:
 				match wall_block:
 					0:
@@ -89,6 +93,10 @@ func _on_Player_Interact(breaker):
 						set_cell(local.x+1, local.y, 16)
 					16:
 						set_cell(local.x+1, local.y, 13)
+					17:
+						set_cell(local.x+1, local.y, 18)
+					18:
+						set_cell(local.x+1, local.y, 17)
 		elif diag_block!=-1:
 			if direction:
 				match diag_block:
@@ -112,6 +120,10 @@ func _on_Player_Interact(breaker):
 						set_cell(local.x-1, local.y+1, 16)
 					16:
 						set_cell(local.x-1, local.y+1, 13)
+					17:
+						set_cell(local.x-1, local.y+1, 18)
+					18:
+						set_cell(local.x-1, local.y+1, 17)
 			else:
 				match diag_block:
 					0:
@@ -134,3 +146,8 @@ func _on_Player_Interact(breaker):
 						set_cell(local.x+1, local.y+1, 16)
 					16:
 						set_cell(local.x+1, local.y+1, 13)
+					17:
+						set_cell(local.x+1, local.y+1, 18)
+					18:
+						set_cell(local.x+1, local.y+1, 17)
+

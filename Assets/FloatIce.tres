@@ -1,7 +1,7 @@
 [gd_resource type="AnimatedTexture" load_steps=4 format=2]
 
-[ext_resource path="res://Assets/ice2.png" type="Texture" id=1]
-[ext_resource path="res://Assets/ice1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/icegudveryrikthfat3.png" type="Texture" id=1]
+[ext_resource path="res://Assets/icegudvery2.png" type="Texture" id=2]
 [ext_resource path="res://Assets/ice-Recovered (2).png" type="Texture" id=3]
 
 [resource]
