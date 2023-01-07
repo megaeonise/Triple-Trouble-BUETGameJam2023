@@ -10,6 +10,12 @@ var finished = true
 func _on_AnimatedSprite_animation_finished():
 	if not (get_animation()=='Idle' or get_animation()=='Left Idle'):
 		finished = true
+	elif get_animation()=='Left Interact' or get_animation()=='Right Interact':
+		finished = true
+		if facing == false:
+			_animation.play('Idle')
+		else:
+			_animation.play('Left Idle')
 
 
 #Jump Animation
@@ -72,3 +78,4 @@ func _on_Player_Dead():
 		_animation.play('Left Death')
 	else:
 		_animation.play('Right Death')
+

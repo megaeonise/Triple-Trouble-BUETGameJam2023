@@ -24,6 +24,12 @@ var super_jump_ready: bool = false
 var dedsfx: bool = false
 var jumpsfx: bool = false
 var dashsfx: bool = false
+var ice: bool = false
+var t_grav: int = 0
+var t_x: int = 0
+var t_y: int = 0
+var t_j: int = 0
+var t_s: int = 0
 #Signals
 signal Dead
 signal Ground
@@ -42,6 +48,8 @@ signal Healed
 signal Crystal
 signal Lava
 #Controls
+func _ready():
+	$LoadPlayer.play()
 func get_input(delta):
 	#Initial Velocity
 	velocity.x = 0
@@ -49,6 +57,7 @@ func get_input(delta):
 	if is_on_floor() and state == states[1] and not state in states.slice(2,5):
 		can_jump = true
 		state = states[0]
+		ice = false
 		emit_signal('Ground')
 		$AnimatedSprite.visible = true
 	#Setting Air state after falling
@@ -63,12 +72,12 @@ func get_input(delta):
 		velocity.y = 0
 		$AnimatedSprite.visible = false
 		if Input.is_action_just_pressed("move_left"):
-			velocity.x-= speed+500*10
+			velocity.x-= speed+speed*10*1.67
 			state = states[1]
 			gravity = 500
 			$AnimatedSprite.visible = true
 		elif Input.is_action_just_pressed("move_right"):
-			velocity.x+= speed+500*10
+			velocity.x+= speed+speed*10*1.67
 			state = states[1]
 			gravity = 500
 			$AnimatedSprite.visible = true
@@ -115,12 +124,12 @@ func get_input(delta):
 				#Right Move
 				if Input.is_action_pressed("move_right"):
 					facing = false
-					velocity.x += 500
+					velocity.x += speed*1.7
 					emit_signal('Right')
 				#Left Move
 				elif Input.is_action_pressed("move_left"):
 					facing = true
-					velocity.x -= 500
+					velocity.x -= speed*1.7
 					emit_signal('Left')
 				#Stop Signal
 				else:
@@ -129,12 +138,12 @@ func get_input(delta):
 				#Right Move
 				if Input.is_action_pressed("move_right"):
 					facing = false
-					velocity.x += speed-200
+					velocity.x += speed*0.7
 					emit_signal('Right')
 				#Left Move
 				elif Input.is_action_pressed("move_left"):
 					facing = true
-					velocity.x -= speed-200
+					velocity.x -= speed*0.7
 					emit_signal('Left')
 				#Stop Signal
 				else:
@@ -175,8 +184,19 @@ func get_input(delta):
 			state = states[3]
 			emit_signal('Interact', false)
 		if Input.is_action_just_pressed("destroy") and breaker>0:
+			t_grav = gravity
+			t_x = velocity.x
+			t_y = velocity.y
+			t_j = jumpspeed
+			t_s = speed
+			gravity = 0
+			velocity.x = 0
+			velocity.y = 0
+			speed = 0
+			jumpspeed = 0
 			finished = false
 			state = states[3]
+			$DestroyPlayer.play()
 			emit_signal('Interact', breaker)
 			breaker -= 1
 			$CPUParticles2D.set_emitting(false)
@@ -199,7 +219,7 @@ func get_input(delta):
 	
 #Driver code
 func _physics_process(delta):
-	print(hp)
+	print($Destroball.is_emitting())
 	get_input(delta)
 	#Powered-Up
 	if breaker>0:
@@ -208,7 +228,6 @@ func _physics_process(delta):
 			$RichTextLabel/Background.set_visible(true)
 			$CPUParticles2D2.set_emitting(true)
 			$RichTextLabel.set_bbcode("[center]Destructor obtained. You've only one shot.[/center]")
-			
 	#Death
 	if hp==0:
 		state=states[4]
@@ -233,15 +252,20 @@ func _physics_process(delta):
 		timer=true
 		$Timer.start()
 		velocity.y -= 500
+		$WaterPlayer.play()
 		$Water.set_emitting(true)
 	#Icestick
 	if floor_block == 3:
 		speed = 100
+		if not ice:
+			ice = true
+			$IcePlayer.play()
 	else:
 		speed = 300
 	#Lava
 	if floor_block == 7:
 		if hp!=maxhp:
+			$LavaPlayer.play()
 			hp+=1
 			$HealedPlayer.play()
 			$Healed.set_emitting(true)
@@ -264,6 +288,7 @@ func _physics_process(delta):
 				invincibility = true
 				$Timer.start()
 		if not super_jump_ready:
+			$CrystalPlayer.play()
 			super_jump = true
 			super_jump_ready = true
 			$CrystalTimer.start()
@@ -294,6 +319,7 @@ func _on_DarkMatter_body_entered(body):
 
 #Powering up
 func _on_Breaker_body_entered(body):
+	$RubyPlayer.play()
 	breaker += 1
 	can_emit = true
 	$Timer2.start()
@@ -364,6 +390,7 @@ func _on_Des_Time4_timeout():
 func _on_Des_Time5_timeout():
 	$Destroball.set_emitting(false)
 	$Destructor2.set_emitting(true)
+	$Destructor2/Des_Time6.start()
 	
 func _on_Des_Time1L_timeout():
 	$"DestructorL Impact Frame 1".set_emitting(true)
@@ -388,6 +415,7 @@ func _on_Des_Time4L_timeout():
 func _on_Des_Time5L_timeout():
 	$Destroball2.set_emitting(false)
 	$DestructorL2.set_emitting(true)
+	$DestructorL2/Des_Time6L.start()
 
 
 
@@ -401,3 +429,32 @@ func _on_JumpPlayer_finished():
 
 func _on_DashPlayer_finished():
 	dashsfx = false
+
+
+
+func _on_Des_Time6_timeout():
+	gravity = t_grav
+	velocity.x = t_x
+	velocity.y = 0
+	speed = t_s
+	jumpspeed = t_j
+	t_grav = 0
+	t_x = 0
+	t_y = 0
+	t_s = 0
+	t_j = 0
+
+
+func _on_Des_Time6L_timeout():
+	gravity = t_grav
+	velocity.x = t_x
+	velocity.y = 0
+	speed = t_s
+	jumpspeed = t_j
+	t_grav = 0
+	t_x = 0
+	t_y = 0
+	t_s = 0
+	t_j = 0
+	
+

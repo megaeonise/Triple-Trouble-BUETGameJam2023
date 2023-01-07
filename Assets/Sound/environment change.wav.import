@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/environment change.wav-a2e784d69080783d07667fc77a7549b8.sample"
+
+[deps]
+
+source_file="res://Assets/Sound/environment change.wav"
+dest_files=[ "res://.import/environment change.wav-a2e784d69080783d07667fc77a7549b8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
