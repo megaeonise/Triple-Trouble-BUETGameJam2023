@@ -1,182 +1,290 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=35 format=2]
 
-[ext_resource path="res://Assets/spaceback.png" type="Texture" id=1]
-[ext_resource path="res://Assets/cloud1.png" type="Texture" id=2]
-[ext_resource path="res://Assets/cloud2.png" type="Texture" id=3]
-[ext_resource path="res://Assets/cloud3.png" type="Texture" id=4]
-[ext_resource path="res://Assets/moon earth.png" type="Texture" id=5]
-[ext_resource path="res://Assets/moonspace.png" type="Texture" id=6]
-[ext_resource path="res://Assets/moondistortion.png" type="Texture" id=7]
-[ext_resource path="res://Assets/sun.png" type="Texture" id=8]
-[ext_resource path="res://Scenes/boc.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/Breaker.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/Sun.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Grass.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/RainbowStars.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Grass.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Miscellaneous.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/SuperStars.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Breaker.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/goal.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sound/level Completion .wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/moon ph1.png" type="Texture" id=9]
+[ext_resource path="res://Assets/daarkmoonlaugh2.png" type="Texture" id=10]
+[ext_resource path="res://Assets/moon ph2.png" type="Texture" id=11]
+[ext_resource path="res://Assets/moon ph3.png" type="Texture" id=12]
+[ext_resource path="res://Assets/moon_ph2.png" type="Texture" id=13]
+[ext_resource path="res://Assets/moon_ph2-sheet.png" type="Texture" id=14]
+[ext_resource path="res://Assets/moon_over.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Font.tres" type="DynamicFont" id=16]
+[ext_resource path="res://Scripts/FinalGoal.gd" type="Script" id=17]
+[ext_resource path="res://Assets/spaceback.png" type="Texture" id=18]
 
-[sub_resource type="TileSet" id=1]
-0/name = "sun.png 0"
-0/texture = ExtResource( 8 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 96, 32 )
-0/tile_mode = 2
-0/autotile/icon_coordinate = Vector2( 0, 0 )
-0/autotile/tile_size = Vector2( 32, 32 )
-0/autotile/spacing = 0
-0/autotile/occluder_map = [  ]
-0/autotile/navpoly_map = [  ]
-0/autotile/priority_map = [  ]
-0/autotile/z_index_map = [  ]
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
-1/name = "moon earth.png 1"
-1/texture = ExtResource( 5 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 0, 32, 32 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape_one_way = false
-1/shape_one_way_margin = 0.0
-1/shapes = [  ]
-1/z_index = 0
-2/name = "moonspace.png 2"
-2/texture = ExtResource( 6 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 0, 0, 32, 32 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape_one_way = false
-2/shape_one_way_margin = 0.0
-2/shapes = [  ]
-2/z_index = 0
-3/name = "moondistortion.png 3"
-3/texture = ExtResource( 7 )
-3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 0, 0, 32, 32 )
-3/tile_mode = 0
-3/occluder_offset = Vector2( 0, 0 )
-3/navigation_offset = Vector2( 0, 0 )
-3/shape_offset = Vector2( 0, 0 )
-3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape_one_way = false
-3/shape_one_way_margin = 0.0
-3/shapes = [  ]
-3/z_index = 0
-4/name = "cloud1.png 4"
-4/texture = ExtResource( 2 )
-4/tex_offset = Vector2( 0, 0 )
-4/modulate = Color( 1, 1, 1, 1 )
-4/region = Rect2( 0, 0, 64, 32 )
-4/tile_mode = 2
-4/autotile/icon_coordinate = Vector2( 0, 0 )
-4/autotile/tile_size = Vector2( 32, 32 )
-4/autotile/spacing = 0
-4/autotile/occluder_map = [  ]
-4/autotile/navpoly_map = [  ]
-4/autotile/priority_map = [  ]
-4/autotile/z_index_map = [  ]
-4/occluder_offset = Vector2( 0, 0 )
-4/navigation_offset = Vector2( 0, 0 )
-4/shape_offset = Vector2( 0, 0 )
-4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-4/shape_one_way = false
-4/shape_one_way_margin = 0.0
-4/shapes = [  ]
-4/z_index = 0
-5/name = "cloud2.png 5"
-5/texture = ExtResource( 3 )
-5/tex_offset = Vector2( 0, 0 )
-5/modulate = Color( 1, 1, 1, 1 )
-5/region = Rect2( 0, 0, 64, 32 )
-5/tile_mode = 2
-5/autotile/icon_coordinate = Vector2( 0, 0 )
-5/autotile/tile_size = Vector2( 32, 32 )
-5/autotile/spacing = 0
-5/autotile/occluder_map = [  ]
-5/autotile/navpoly_map = [  ]
-5/autotile/priority_map = [  ]
-5/autotile/z_index_map = [  ]
-5/occluder_offset = Vector2( 0, 0 )
-5/navigation_offset = Vector2( 0, 0 )
-5/shape_offset = Vector2( 0, 0 )
-5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape_one_way = false
-5/shape_one_way_margin = 0.0
-5/shapes = [  ]
-5/z_index = 0
-6/name = "cloud3.png 6"
-6/texture = ExtResource( 4 )
-6/tex_offset = Vector2( 0, 0 )
-6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 0, 0, 64, 32 )
-6/tile_mode = 2
-6/autotile/icon_coordinate = Vector2( 0, 0 )
-6/autotile/tile_size = Vector2( 32, 32 )
-6/autotile/spacing = 0
-6/autotile/occluder_map = [  ]
-6/autotile/navpoly_map = [  ]
-6/autotile/priority_map = [  ]
-6/autotile/z_index_map = [  ]
-6/occluder_offset = Vector2( 0, 0 )
-6/navigation_offset = Vector2( 0, 0 )
-6/shape_offset = Vector2( 0, 0 )
-6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape_one_way = false
-6/shape_one_way_margin = 0.0
-6/shapes = [  ]
-6/z_index = 0
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 32, 32 )
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "1FStatic",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "2FStatic",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "3 Flame",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "NFStatic",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "1 Flame",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "No Flame",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "2 Flame",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 12 ) ],
+"loop": true,
+"name": "3FStatic",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 2912, 40 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 2392, 48 )
+
+[node name="Sea" type="Node2D"]
+__meta__ = {
+"_editor_description_": "To add: Tutorial and Cannon Event.
+Tut text
+Set the moon ablaze; Find and shoot the cannons. Cyantext
+and
+Dont waste your Destructors,, lest you have to journey through this Sea again"
+}
 
 [node name="spaceback" type="Sprite" parent="."]
-position = Vector2( 512, 288 )
-texture = ExtResource( 1 )
+self_modulate = Color( 0.686275, 0, 1, 0.901961 )
+position = Vector2( 340.777, -9.96896 )
+rotation = 1.57079
+scale = Vector2( 2.34841, 8.91991 )
+texture = ExtResource( 18 )
 
-[node name="Grass" parent="." instance=ExtResource( 12 )]
-position = Vector2( 0, 0 )
-tile_data = PoolIntArray( 27, 1, 0, 28, 1, 0, 29, 1, 0, 65563, 4, 0, 65564, 4, 0, 65565, 4, 0, 131099, 4, 0, 131100, 4, 0, 131101, 4, 0, 131102, 1, 0, 131103, 1, 0, 196635, 4, 0, 196636, 4, 0, 196637, 4, 0, 196638, 4, 0, 196639, 4, 0, 524298, 3, 0, 524299, 3, 0, 524300, 3, 0, 524301, 3, 0, 524302, 3, 0, 524303, 3, 0, 524307, 3, 0, 524308, 3, 0, 524311, 3, 0, 524312, 3, 0, 655385, 3, 0, 655386, 3, 0, 851995, 3, 0, 851996, 3, 0, 1048600, 1, 0, 1048601, 0, 0, 1048605, 3, 0, 1048606, 1, 0, 1048607, 1, 0, 1114135, 1, 0, 1114136, 4, 0, 1114137, 4, 0, 1114142, 4, 0, 1114143, 4, 0, 1179648, 1, 0, 1179649, 1, 0, 1179650, 1, 0, 1179651, 1, 0, 1179652, 1, 0, 1179653, 1, 0, 1179654, 1, 0, 1179655, 1, 0, 1179656, 1, 0, 1179657, 1, 0, 1179658, 1, 0, 1179659, 1, 0, 1179660, 1, 0, 1179661, 1, 0, 1179662, 1, 0, 1179663, 1, 0, 1179664, 1, 0, 1179665, 1, 0, 1179666, 1, 0, 1179667, 1, 0, 1179668, 1, 0, 1179669, 1, 0, 1179670, 1, 0, 1179671, 4, 0, 1179672, 4, 0, 1179673, 4, 0, 1179674, 2, 0, 1179675, 2, 0, 1179676, 2, 0, 1179677, 2, 0, 1179678, 2, 0, 1179679, 2, 0 )
+[node name="RainbowStars" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, 328 )
+rotation = -1.57079
 
-[node name="TileMap" parent="." instance=ExtResource( 9 )]
-tile_data = PoolIntArray( -1, 0, 0, -65504, 0, 0, 65535, 0, 0, 32, 0, 0, 131071, 0, 0, 65568, 0, 0, 196607, 0, 0, 131104, 0, 0, 262143, 0, 0, 196640, 0, 0, 327679, 0, 0, 262176, 0, 0, 393215, 0, 0, 327712, 0, 0, 458751, 0, 0, 393248, 0, 0, 524287, 0, 0, 458784, 0, 0, 589823, 0, 0, 524320, 0, 0, 655359, 0, 0, 589856, 0, 0, 720895, 0, 0, 655392, 0, 0, 786431, 0, 0, 720928, 0, 0, 851967, 0, 0, 786464, 0, 0, 917503, 0, 0, 852000, 0, 0, 983039, 0, 0, 917536, 0, 0, 1048575, 0, 0, 983072, 0, 0, 1114111, 0, 0, 1048608, 0, 0, 1179647, 0, 0, 1114144, 0, 0, 1245183, 0, 0, 1179680, 0, 0, 1376254, 0, 0, 1376255, 0, 0, 1310720, 0, 0, 1310721, 0, 0, 1310722, 0, 0, 1310723, 0, 0, 1310724, 0, 0, 1310725, 0, 0, 1310726, 0, 0, 1310727, 0, 0, 1310728, 0, 0, 1310729, 0, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0, 1310733, 0, 0, 1310734, 0, 0, 1310735, 0, 0, 1310736, 0, 0, 1310737, 0, 0, 1310738, 0, 0, 1310739, 0, 0, 1310740, 0, 0, 1310741, 0, 0, 1310742, 0, 0, 1310743, 0, 0, 1310744, 0, 0, 1310745, 0, 0, 1310746, 0, 0, 1310747, 0, 0, 1310748, 0, 0, 1310749, 0, 0, 1310750, 0, 0, 1310751, 0, 0, 1310752, 0, 0, 1310753, 0, 0 )
+[node name="RainbowStars2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 96, -592 )
+rotation = -1.57079
 
-[node name="Breaker" parent="." instance=ExtResource( 10 )]
-position = Vector2( 208, 216 )
+[node name="SuperStars" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1104, -376 )
 
-[node name="Goal" parent="." instance=ExtResource( 14 )]
-position = Vector2( 992, 48 )
+[node name="SuperStars2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1264, -352 )
 
-[node name="Miscellaneous" type="TileMap" parent="."]
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 4, 1, 0, 65538, 4, 0, 65539, 4, 1, 65544, 5, 0, 65545, 5, 1, 65558, 5, 0, 65559, 5, 1, 131088, 6, 0, 131089, 6, 1 )
+[node name="SuperStars3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2096, 552 )
 
-[node name="Sun" parent="." instance=ExtResource( 11 )]
-position = Vector2( 824, 24 )
-frame = 2
+[node name="RainbowStars3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 448, 568 )
 
-[node name="Player" parent="." instance=ExtResource( 13 )]
-position = Vector2( 40, 560 )
+[node name="RainbowStars5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32, 160 )
+
+[node name="RainbowStars4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, -136 )
+
+[node name="Grass" parent="." instance=ExtResource( 2 )]
+position = Vector2( -1, 0 )
+tile_data = PoolIntArray( -2162660, 19, 0, -2097125, 9, 0, -2097124, 9, 0, -2097123, 9, 0, -1900519, 11, 0, -1834991, 13, 0, -1834990, 13, 0, -1834989, 13, 0, -1834988, 16, 0, -1834987, 13, 0, -1834986, 13, 0, -1834985, 13, 0, -1834984, 16, 0, -1638316, 19, 0, -1572811, 4, 0, -1572810, 4, 0, -1572809, 4, 0, -1572808, 4, 0, -1572807, 4, 0, -1572806, 4, 0, -1572805, 4, 0, -1572804, 4, 0, -1572803, 4, 0, -1572802, 4, 0, -1572801, 4, 0, -1572800, 4, 0, -1572799, 4, 0, -1572798, 4, 0, -1572797, 4, 0, -1572796, 4, 0, -1572795, 4, 0, -1572794, 4, 0, -1572793, 4, 0, -1572792, 4, 0, -1572791, 4, 0, -1572790, 4, 0, -1572789, 4, 0, -1572788, 4, 0, -1572787, 4, 0, -1572786, 4, 0, -1572785, 4, 0, -1572784, 4, 0, -1572783, 4, 0, -1572782, 4, 0, -1572781, 4, 0, -1572780, 4, 0, -1572779, 4, 0, -1572773, 4, 0, -1507275, 4, 0, -1507243, 4, 0, -1507237, 4, 0, -1441780, 7, 0, -1441779, 18, 0, -1441739, 4, 0, -1441707, 4, 0, -1441701, 4, 0, -1376203, 4, 0, -1376171, 4, 0, -1376166, 8, 0, -1376165, 4, 0, -1310667, 4, 0, -1310635, 4, 0, -1310629, 4, 0, -1245131, 4, 0, -1245099, 4, 0, -1245093, 4, 0, -1179595, 4, 0, -1179563, 4, 0, -1179557, 4, 0, -1114087, 7, 0, -1114086, 18, 0, -1114059, 4, 0, -1114027, 4, 0, -1114021, 4, 0, -1048523, 4, 0, -1048491, 4, 0, -1048490, 8, 0, -1048485, 4, 0, -982987, 4, 0, -982955, 4, 0, -982954, 4, 0, -982953, 4, 0, -982952, 4, 0, -982949, 4, 0, -851989, 19, 0, -917451, 4, 0, -917426, 5, 0, -917425, 5, 0, -917424, 5, 0, -917423, 5, 0, -917422, 5, 0, -917421, 5, 0, -917420, 5, 0, -917419, 5, 0, -917418, 5, 0, -917417, 5, 0, -917416, 4, 0, -917413, 4, 0, -786455, 14, 0, -786454, 9, 0, -786453, 9, 0, -786452, 9, 0, -786451, 14, 0, -851956, 7, 0, -851955, 18, 0, -851915, 4, 0, -851891, 5, 0, -851890, 4, 0, -851877, 4, 0, -786379, 4, 0, -786356, 5, 0, -786355, 4, 0, -786341, 4, 0, -720843, 4, 0, -720821, 5, 0, -720820, 4, 0, -720816, 4, 0, -720815, 4, 0, -720814, 4, 0, -720805, 4, 0, -589849, 8, 0, -655307, 4, 0, -655286, 5, 0, -655285, 4, 0, -655280, 4, 0, -655279, 4, 0, -655278, 4, 0, -655269, 4, 0, -589810, 14, 0, -589809, 15, 0, -589808, 15, 0, -589807, 14, 0, -589771, 4, 0, -589759, 5, 0, -589758, 5, 0, -589757, 5, 0, -589751, 5, 0, -589750, 4, 0, -589745, 5, 0, -589744, 4, 0, -589743, 4, 0, -589742, 4, 0, -589741, 14, 0, -589734, 8, 0, -589733, 4, 0, -524235, 4, 0, -524224, 5, 0, -524223, 4, 0, -524216, 5, 0, -524215, 4, 0, -524210, 5, 0, -524208, 4, 0, -524207, 4, 0, -524206, 4, 0, -524205, 4, 0, -524204, 4, 0, -524203, 4, 0, -524202, 4, 0, -524201, 4, 0, -524200, 4, 0, -524199, 4, 0, -524198, 4, 0, -524197, 4, 0, -458699, 4, 0, -458689, 5, 0, -458688, 4, 0, -458683, 4, 0, -458682, 4, 0, -458681, 4, 0, -458675, 4, 0, -458674, 4, 0, -458672, 4, 0, -458671, 4, 0, -458670, 4, 0, -458669, 4, 0, -458668, 4, 0, -458667, 4, 0, -458666, 4, 0, -458665, 4, 0, -458664, 4, 0, -458663, 4, 0, -458662, 4, 0, -458661, 4, 0, -327713, 17, 0, -327712, 17, 0, -327711, 17, 0, -327710, 14, 0, -327709, 18, 0, -393163, 4, 0, -393154, 5, 0, -393153, 4, 0, -393147, 4, 0, -393146, 4, 0, -393145, 4, 0, -393140, 4, 0, -393139, 4, 0, -393138, 4, 0, -393136, 4, 0, -393135, 4, 0, -393134, 4, 0, -393133, 4, 0, -393132, 4, 0, -393131, 4, 0, -393130, 4, 0, -393129, 4, 0, -393128, 4, 0, -393127, 4, 0, -393126, 4, 0, -393125, 4, 0, -327627, 4, 0, -327619, 5, 0, -327618, 4, 0, -327612, 5, 0, -327611, 4, 0, -327610, 4, 0, -327609, 4, 0, -327605, 4, 0, -327604, 4, 0, -327596, 4, 0, -327595, 4, 0, -327594, 4, 0, -327593, 4, 0, -327592, 4, 0, -327591, 4, 0, -327590, 4, 0, -327589, 4, 0, -262133, 15, 0, -262132, 15, 0, -262131, 15, 0, -262126, 15, 0, -262125, 15, 0, -262124, 15, 0, -262091, 4, 0, -262084, 5, 0, -262083, 4, 0, -262077, 5, 0, -262075, 4, 0, -262074, 4, 0, -262073, 4, 0, -262072, 12, 0, -262070, 4, 0, -262069, 4, 0, -262060, 4, 0, -262059, 4, 0, -262058, 4, 0, -262057, 4, 0, -262056, 4, 0, -262055, 4, 0, -262054, 4, 0, -262053, 4, 0, -196555, 4, 0, -196549, 4, 0, -196548, 4, 0, -196543, 4, 0, -196542, 4, 0, -196541, 4, 0, -196539, 4, 0, -196538, 4, 0, -196537, 4, 0, -196536, 4, 0, -196535, 4, 0, -196534, 4, 0, -196524, 4, 0, -196523, 4, 0, -196522, 4, 0, -196521, 4, 0, -196520, 4, 0, -196519, 4, 0, -196518, 4, 0, -196517, 4, 0, -65538, 4, 0, -65537, 4, 0, -131072, 4, 0, -131071, 4, 0, -131070, 4, 0, -131069, 4, 0, -131068, 4, 0, -131067, 4, 0, -131066, 4, 0, -131065, 4, 0, -131064, 4, 0, -131063, 4, 0, -131062, 4, 0, -131061, 4, 0, -131060, 4, 0, -131059, 4, 0, -131058, 4, 0, -131057, 4, 0, -131056, 4, 0, -131055, 4, 0, -131054, 4, 0, -131053, 4, 0, -131052, 4, 0, -131051, 4, 0, -131050, 4, 0, -131049, 4, 0, -131048, 4, 0, -131047, 4, 0, -131046, 4, 0, -131045, 4, 0, -131044, 4, 0, -131043, 4, 0, -131042, 4, 0, -131041, 4, 0, -131040, 4, 0, -131019, 4, 0, -131008, 4, 0, -130990, 13, 0, -130988, 4, 0, -130987, 4, 0, -130986, 4, 0, -130985, 4, 0, -130984, 4, 0, -130983, 4, 0, -130982, 4, 0, -130981, 4, 0, -2, 4, 0, -65504, 4, 0, -65483, 4, 0, -65473, 4, 0, -65452, 4, 0, -65451, 4, 0, -65450, 4, 0, -65449, 4, 0, -65448, 4, 0, -65447, 4, 0, -65446, 4, 0, -65445, 4, 0, 65507, 13, 0, 65508, 13, 0, 65509, 13, 0, 65510, 13, 0, 65511, 13, 0, 65512, 13, 0, 65513, 13, 0, 65514, 17, 0, 65515, 17, 0, 65516, 17, 0, 65517, 14, 0, 65534, 4, 0, 32, 4, 0, 53, 4, 0, 62, 4, 0, 83, 4, 0, 84, 4, 0, 85, 4, 0, 86, 4, 0, 87, 4, 0, 88, 4, 0, 89, 4, 0, 90, 4, 0, 91, 4, 0, 131070, 4, 0, 65568, 4, 0, 65586, 12, 0, 65587, 12, 0, 65588, 12, 0, 65589, 4, 0, 65597, 4, 0, 65619, 4, 0, 65620, 4, 0, 65621, 4, 0, 65625, 4, 0, 196606, 4, 0, 131104, 4, 0, 131125, 4, 0, 131132, 4, 0, 131155, 4, 0, 131156, 4, 0, 131157, 4, 0, 131161, 4, 0, 262129, 11, 0, 262130, 15, 0, 262131, 15, 0, 262132, 15, 0, 262133, 15, 0, 262134, 14, 0, 262142, 4, 0, 196640, 4, 0, 196641, 4, 0, 196642, 4, 0, 196661, 4, 0, 196667, 4, 0, 196691, 4, 0, 196692, 4, 0, 196693, 4, 0, 196697, 4, 0, 327678, 4, 0, 262178, 4, 0, 262197, 4, 0, 262211, 7, 0, 262212, 7, 0, 262213, 7, 0, 262214, 7, 0, 262215, 17, 0, 262224, 11, 0, 262227, 4, 0, 262228, 4, 0, 262229, 4, 0, 262233, 4, 0, 393214, 4, 0, 327714, 4, 0, 327733, 4, 0, 327763, 4, 0, 327764, 4, 0, 327765, 4, 0, 327769, 4, 0, 458750, 4, 0, 393250, 4, 0, 393269, 4, 0, 393270, 4, 0, 393271, 4, 0, 393272, 4, 0, 393273, 18, 0, 393299, 4, 0, 393300, 4, 0, 393301, 4, 0, 393304, 17, 0, 393305, 4, 0, 524286, 4, 0, 458786, 4, 0, 458803, 12, 0, 458804, 12, 0, 458805, 4, 0, 458806, 4, 0, 458807, 4, 0, 458808, 4, 0, 458814, 18, 0, 458835, 4, 0, 458841, 4, 0, 589822, 4, 0, 524322, 4, 0, 524325, 13, 0, 524341, 4, 0, 524342, 4, 0, 524343, 4, 0, 524344, 4, 0, 524371, 4, 0, 524377, 4, 0, 655358, 4, 0, 655359, 14, 0, 589824, 14, 0, 589825, 14, 0, 589826, 14, 0, 589827, 14, 0, 589828, 14, 0, 589829, 14, 0, 589830, 14, 0, 589831, 14, 0, 589832, 14, 0, 589833, 14, 0, 589834, 14, 0, 589835, 14, 0, 589836, 14, 0, 589837, 14, 0, 589838, 14, 0, 589839, 14, 0, 589840, 14, 0, 589841, 14, 0, 589842, 14, 0, 589843, 14, 0, 589844, 14, 0, 589845, 14, 0, 589846, 14, 0, 589847, 14, 0, 589848, 14, 0, 589849, 14, 0, 589850, 14, 0, 589851, 14, 0, 589852, 14, 0, 589853, 14, 0, 589854, 14, 0, 589855, 14, 0, 589856, 14, 0, 589857, 14, 0, 589858, 4, 0, 589877, 4, 0, 589878, 4, 0, 589879, 4, 0, 589880, 4, 0, 589881, 3, 0, 589907, 4, 0, 589913, 4, 0, 720894, 4, 0, 655392, 4, 0, 655393, 4, 0, 655394, 4, 0, 655417, 4, 0, 655418, 3, 0, 655443, 4, 0, 655447, 14, 0, 655448, 11, 0, 655449, 4, 0, 786430, 4, 0, 720928, 4, 0, 720940, 11, 0, 720941, 15, 0, 720954, 4, 0, 720955, 3, 0, 720979, 4, 0, 720985, 4, 0, 851966, 4, 0, 786464, 4, 0, 786491, 4, 0, 786492, 3, 0, 786515, 4, 0, 786521, 4, 0, 917502, 4, 0, 852000, 4, 0, 852028, 4, 0, 852029, 3, 0, 852051, 4, 0, 852053, 11, 0, 852057, 4, 0, 983038, 4, 0, 917536, 4, 0, 917565, 4, 0, 917566, 3, 0, 917587, 4, 0, 917593, 4, 0, 1048574, 4, 0, 983072, 4, 0, 983102, 4, 0, 983103, 3, 0, 983123, 4, 0, 983129, 4, 0, 1114110, 4, 0, 1048608, 4, 0, 1048639, 4, 0, 1048640, 3, 0, 1048659, 4, 0, 1048665, 4, 0, 1179646, 4, 0, 1114144, 4, 0, 1114176, 4, 0, 1114177, 3, 0, 1114195, 4, 0, 1114201, 4, 0, 1245182, 4, 0, 1179680, 4, 0, 1179713, 4, 0, 1179714, 3, 0, 1179731, 4, 0, 1179737, 4, 0, 1310718, 4, 0, 1245216, 4, 0, 1245250, 4, 0, 1245251, 3, 0, 1245267, 4, 0, 1245271, 14, 0, 1245272, 11, 0, 1245273, 4, 0, 1376254, 4, 0, 1376255, 4, 0, 1310720, 4, 0, 1310721, 4, 0, 1310722, 4, 0, 1310723, 4, 0, 1310724, 4, 0, 1310725, 4, 0, 1310726, 4, 0, 1310727, 4, 0, 1310728, 4, 0, 1310729, 4, 0, 1310730, 4, 0, 1310731, 4, 0, 1310732, 4, 0, 1310733, 4, 0, 1310734, 4, 0, 1310735, 4, 0, 1310736, 4, 0, 1310737, 4, 0, 1310738, 4, 0, 1310739, 4, 0, 1310740, 4, 0, 1310741, 4, 0, 1310742, 4, 0, 1310743, 4, 0, 1310744, 4, 0, 1310745, 4, 0, 1310746, 4, 0, 1310747, 4, 0, 1310748, 4, 0, 1310749, 4, 0, 1310750, 4, 0, 1310751, 4, 0, 1310752, 4, 0, 1310787, 4, 0, 1310788, 3, 0, 1310803, 4, 0, 1310809, 4, 0, 1376324, 4, 0, 1376325, 3, 0, 1376339, 4, 0, 1376345, 4, 0, 1441861, 4, 0, 1441862, 3, 0, 1441875, 4, 0, 1441881, 4, 0, 1507398, 4, 0, 1507399, 3, 0, 1507411, 4, 0, 1507413, 11, 0, 1507417, 4, 0, 1572935, 4, 0, 1572936, 3, 0, 1572947, 4, 0, 1572953, 4, 0, 1638472, 4, 0, 1638473, 3, 0, 1638483, 4, 0, 1638489, 4, 0, 1704009, 4, 0, 1704010, 3, 0, 1704019, 4, 0, 1704025, 4, 0, 1769546, 4, 0, 1769547, 3, 0, 1769561, 4, 0, 1835083, 4, 0, 1835084, 3, 0, 1835097, 4, 0, 1900620, 4, 0, 1900621, 3, 0, 1900632, 11, 0, 1900633, 4, 0, 1966157, 4, 0, 1966158, 3, 0, 1966169, 4, 0, 2031694, 4, 0, 2031695, 17, 0, 2031696, 17, 0, 2031697, 17, 0, 2031698, 17, 0, 2031699, 17, 0, 2031700, 17, 0, 2031701, 17, 0, 2031702, 17, 0, 2031703, 17, 0, 2031704, 17, 0, 2031705, 4, 0 )
+
+[node name="Moon" type="AnimatedSprite" parent="."]
+position = Vector2( 508, 38 )
+scale = Vector2( 1.25, 1.125 )
+frames = SubResource( 13 )
+animation = "3 Flame"
+playing = true
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 512, 272 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = -1.0
+margin_top = 80.0
+margin_right = 1023.0
+margin_bottom = 272.0
+custom_fonts/normal_font = ExtResource( 16 )
+bbcode_enabled = true
+bbcode_text = "[center]You have set the Moon ablaze. The world is saved. Your journey ends here, in the [color=#0025f5]S[/color][color=#00ffff]e[/color][color=#3dd2ff]a[/color] [color=#9400d3]o[/color][color=#0000ff]f[/color] [color=#00ff00]S[/color][color=#ffff00]t[/color][color=#ff7f00]a[/color][color=#ff0000]r[/color][color=#ff4888]s[/color].[/center]"
+text = "You have set the Moon ablaze. The world is saved. Your journey ends here, in the Sea of Stars."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Goal" type="Area2D" parent="."]
+script = ExtResource( 17 )
+
+[node name="Sprite" type="Sprite" parent="Goal"]
+position = Vector2( 512, 248 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+position = Vector2( 512, 248 )
+shape = SubResource( 14 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Goal"]
+position = Vector2( 512, 248 )
+amount = 5
+lifetime = 0.4
+speed_scale = 0.75
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2( 0, -50 )
+scale_amount = 3.0
+scale_amount_random = 1.0
+color = Color( 0, 0.964706, 1, 1 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[node name="Timer" type="Timer" parent="Goal"]
+wait_time = 2.0
+
+[node name="Audio" type="AudioStreamPlayer" parent="Goal"]
+stream = ExtResource( 8 )
+
+[node name="Miscellaneous" parent="." instance=ExtResource( 4 )]
+self_modulate = Color( 0, 1, 0.905882, 1 )
+tile_data = PoolIntArray( -1572776, 7, 0, -1507266, 7, 0, -1507242, 7, 0, -1245105, 7, 0, -1179575, 7, 0, -1179560, 7, 0, -1048513, 7, 0, -917446, 7, 0, -655273, 7, 0, -589767, 7, 0, -524231, 7, 0, 9, 7, 0, 131095, 7, 0, 131118, 7, 0, 327692, 7, 0, 393238, 7, 0, 393242, 7, 0, 524306, 7, 0, 524317, 7, 0, 524337, 7, 0, 720980, 7, 0, 720988, 7, 0, 786452, 7, 0, 917573, 7, 0, 983051, 7, 0, 1048650, 7, 0, 1441879, 7, 0, 1703997, 7, 0, 1769552, 7, 0 )
+
+[node name="Miscellaneous2" parent="." instance=ExtResource( 4 )]
+self_modulate = Color( 1, 0.282353, 0, 1 )
+tile_data = PoolIntArray( -1114132, 7, 0, -917531, 7, 0, -852001, 7, 0, -524322, 7, 0, -458771, 7, 0, -458770, 7, 0, -262169, 7, 0, -262168, 7, 0, -262167, 7, 0, -131108, 7, 0, -131107, 7, 0, -131106, 7, 0, -131105, 7, 0, -131104, 7, 0, -131080, 7, 0, -21, 7, 0, -19, 7, 0, -14, 7, 0, 9, 7, 0, 131038, 7, 0, 131095, 7, 0, 393196, 7, 0, 327692, 7, 0, 393221, 7, 0, 393238, 7, 0, 524261, 7, 0, 524277, 7, 0, 524306, 7, 0, 589828, 7, 0, 786452, 7, 0, 983051, 7, 0 )
+
+[node name="Miscellaneous3" parent="." instance=ExtResource( 4 )]
+self_modulate = Color( 0.921569, 0, 1, 1 )
+tile_data = PoolIntArray( -2293734, 7, 0, -2097133, 7, 0, -1966055, 7, 0, -1703923, 7, 0, -1703913, 7, 0, -1638390, 7, 0, -1310695, 7, 0, -1179621, 7, 0, -1114100, 7, 0, -786416, 7, 0, -458741, 7, 0, -393206, 7, 0, -393197, 7, 0, -131055, 7, 0, -1, 7, 0, 65535, 7, 0, 9, 7, 0, 18, 7, 0, 196620, 7, 0, 524306, 7, 0, 786452, 7, 0, 983051, 7, 0 )
+
+[node name="Breaker" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2304, 28 )
+
+[node name="Breaker2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1600, 208 )
+
+[node name="Breaker3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2616, -104 )
+
+[node name="Breaker4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2792, 88 )
+
+[node name="Death Plane" type="Area2D" parent="."]
+position = Vector2( 512, 720 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death Plane"]
+position = Vector2( -96, 544 )
+shape = SubResource( 15 )
+
+[node name="Death Plane2" type="Area2D" parent="."]
+position = Vector2( 512, 720 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death Plane2"]
+position = Vector2( -912, 24 )
+shape = SubResource( 16 )
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
-[connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="cannon_fired" from="Grass" to="Moon" method="_on_Grass_cannon_fired"]
 [connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]
 [connection signal="Direction" from="Player" to="Grass" method="_on_Player_Direction"]
 [connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]
+[connection signal="Moonhurt" from="Player" to="Moon" method="_on_Player_Moonhurt"]
+[connection signal="body_entered" from="Goal" to="Goal" method="_on_Goal_body_entered"]
+[connection signal="timeout" from="Goal/Timer" to="Goal" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker3" to="Breaker3" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker3" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker4" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker4" to="Breaker4" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Death Plane" to="Player" method="_on_Death_Plane_body_entered"]
+[connection signal="body_entered" from="Death Plane2" to="Player" method="_on_Death_Plane_body_entered"]
+[connection signal="body_entered" from="Death Plane2" to="Player" method="_on_Death_Plane2_body_entered"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=46 format=2]
 
+[ext_resource path="res://Assets/Sound/final boss_ end .ogg" type="AudioStream" id=1]
 [ext_resource path="res://Assets/Font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scenes/Levels/MoonProjectile.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
@@ -11,6 +12,7 @@
 [ext_resource path="res://Scenes/RainbowStars.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/SuperStars.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/spaceback.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/Tutorial-FC.gd" type="Script" id=13]
 [ext_resource path="res://Assets/moon ph1.png" type="Texture" id=14]
 [ext_resource path="res://Assets/citygud.png" type="Texture" id=15]
 [ext_resource path="res://Scripts/Title.gd" type="Script" id=16]
@@ -22,6 +24,8 @@
 [ext_resource path="res://Assets/moon_over.png" type="Texture" id=22]
 [ext_resource path="res://Assets/Sound/laugh.wav" type="AudioStream" id=23]
 [ext_resource path="res://Assets/Sound/laugh2.wav" type="AudioStream" id=24]
+[ext_resource path="res://Assets/tree.png" type="Texture" id=25]
+[ext_resource path="res://Scripts/Tutorial-F1.gd" type="Script" id=26]
 [ext_resource path="res://Assets/blinkstar1.png" type="Texture" id=36]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -31,58 +35,58 @@ region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
-atlas = ExtResource( 22 )
+atlas = ExtResource( 19 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
-atlas = ExtResource( 19 )
+atlas = ExtResource( 22 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
-atlas = ExtResource( 14 )
-region = Rect2( 0, 0, 32, 32 )
+atlas = ExtResource( 22 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
-atlas = ExtResource( 22 )
+atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
-atlas = ExtResource( 22 )
-region = Rect2( 32, 0, 32, 32 )
+atlas = ExtResource( 20 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 20 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 17 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=9]
-flags = 4
-atlas = ExtResource( 20 )
-region = Rect2( 0, 0, 32, 32 )
-
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
-atlas = ExtResource( 20 )
-region = Rect2( 32, 0, 32, 32 )
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 21 )
-region = Rect2( 0, 0, 32, 32 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
-atlas = ExtResource( 21 )
-region = Rect2( 32, 0, 32, 32 )
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
@@ -93,42 +97,48 @@ animations = [ {
 }, {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
-"name": "3FStatic",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 3 ) ],
-"loop": true,
 "name": "2FStatic",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 4 ) ],
-"loop": true,
-"name": "NFStatic",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "3 Flame",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 5 ) ],
 "loop": true,
-"name": "No Flame",
+"name": "NFStatic",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "1 Flame",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 11 ), SubResource( 12 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "No Flame",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "2 Flame",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 12 ) ],
+"loop": true,
+"name": "3FStatic",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 3.20001, 1.77778 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 96, 8 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 32, 8 )
 
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 2912, 40 )
@@ -147,9 +157,9 @@ Dont waste your Destructors,, lest you have to journey through this Sea again"
 
 [node name="spaceback" type="Sprite" parent="."]
 self_modulate = Color( 0.686275, 0, 1, 0.901961 )
-position = Vector2( 340.777, -9.96896 )
+position = Vector2( 624, 1680 )
 rotation = 1.57079
-scale = Vector2( 2.34841, 8.91991 )
+scale = Vector2( 9.02821, 16.6373 )
 texture = ExtResource( 12 )
 
 [node name="RainbowStars" parent="." instance=ExtResource( 10 )]
@@ -301,6 +311,138 @@ position = Vector2( 2616, -104 )
 [node name="Breaker4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2792, 88 )
 
+[node name="Tutorial2" type="Area2D" parent="."]
+position = Vector2( 1792, 176 )
+script = ExtResource( 26 )
+
+[node name="Sprite" type="Sprite" parent="Tutorial2"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tutorial2"]
+margin_left = 88.0
+margin_right = 544.0
+margin_bottom = 176.0
+custom_colors/default_color = Color( 0, 1, 1, 1 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial2"]
+position = Vector2( 64, -24 )
+shape = SubResource( 18 )
+
+[node name="Timer" type="Timer" parent="Tutorial2"]
+wait_time = 5.0
+
+[node name="CTut1" type="Area2D" parent="."]
+position = Vector2( 2832, -792 )
+script = ExtResource( 26 )
+
+[node name="Sprite" type="Sprite" parent="CTut1"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CTut1"]
+margin_left = -232.0
+margin_top = -248.0
+margin_right = 224.0
+margin_bottom = -72.0
+custom_colors/default_color = Color( 0, 1, 1, 1 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CTut1"]
+position = Vector2( 0, -24 )
+shape = SubResource( 18 )
+
+[node name="Timer" type="Timer" parent="CTut1"]
+wait_time = 5.0
+
+[node name="CTut2" type="Area2D" parent="."]
+position = Vector2( 760, -992 )
+script = ExtResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="CTut2"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CTut2"]
+margin_left = -80.0
+margin_top = -176.0
+margin_right = 376.0
+custom_colors/default_color = Color( 0, 1, 1, 1 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CTut2"]
+position = Vector2( -96, 80 )
+shape = SubResource( 18 )
+
+[node name="Timer" type="Timer" parent="CTut2"]
+wait_time = 5.0
+
+[node name="CTut3" type="Area2D" parent="."]
+position = Vector2( -720, -512 )
+script = ExtResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="CTut3"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CTut3"]
+margin_left = -176.0
+margin_top = -112.0
+margin_right = 280.0
+margin_bottom = 64.0
+custom_colors/default_color = Color( 0, 1, 1, 1 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CTut3"]
+position = Vector2( -96, 80 )
+shape = SubResource( 18 )
+
+[node name="Timer" type="Timer" parent="CTut3"]
+wait_time = 5.0
+
+[node name="Tutorial" type="Area2D" parent="."]
+position = Vector2( 176, 576 )
+script = ExtResource( 26 )
+
+[node name="Sprite" type="Sprite" parent="Tutorial"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tutorial"]
+margin_left = 112.0
+margin_top = -472.0
+margin_right = 568.0
+margin_bottom = -296.0
+custom_colors/default_color = Color( 0, 1, 1, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Set the moon ablaze; Find and shoot the cannons.[/center]"
+text = "Set the moon ablaze; Find and shoot the cannons."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial"]
+visible = false
+position = Vector2( 0, -24 )
+shape = SubResource( 17 )
+
+[node name="Timer" type="Timer" parent="Tutorial"]
+wait_time = 7.0
+one_shot = true
+
 [node name="Death Plane" type="Area2D" parent="."]
 position = Vector2( 512, 720 )
 
@@ -362,6 +504,10 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
 [connection signal="cannon_fired" from="Grass" to="Player/Moon" method="_on_Grass_cannon_fired"]
 [connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]
@@ -370,13 +516,13 @@ __meta__ = {
 [connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]
 [connection signal="Moonhurt" from="Player" to="Player/Moon" method="_on_Player_Moonhurt"]
 [connection signal="restart" from="Player/Moon/ProjectileArea" to="Player/Moon" method="_on_ProjectileArea_restart"]
-[connection signal="shot" from="Player/Moon/ProjectileArea" to="Player" method="_on_ProjectileArea_shot"]
 [connection signal="shot" from="Player/Moon/ProjectileArea" to="Player/Moon" method="_on_ProjectileArea_shot"]
+[connection signal="shot" from="Player/Moon/ProjectileArea" to="Player" method="_on_ProjectileArea_shot"]
 [connection signal="turn_off" from="Player/Moon/ProjectileArea" to="Player/Moon" method="_on_ProjectileArea_turn_off"]
-[connection signal="timeout" from="Player/Moon/MoonTimer" to="Player/Moon/CPUParticles2D" method="_on_MoonTimer_timeout"]
 [connection signal="timeout" from="Player/Moon/MoonTimer" to="Player/Moon" method="_on_MoonTimer_timeout"]
-[connection signal="timeout" from="Player/Moon/ProjectileTimer" to="Player/Moon/ProjectileArea" method="_on_ProjectileTimer_timeout"]
+[connection signal="timeout" from="Player/Moon/MoonTimer" to="Player/Moon/CPUParticles2D" method="_on_MoonTimer_timeout"]
 [connection signal="timeout" from="Player/Moon/ProjectileTimer" to="Player/Moon" method="_on_ProjectileTimer_timeout"]
+[connection signal="timeout" from="Player/Moon/ProjectileTimer" to="Player/Moon/ProjectileArea" method="_on_ProjectileTimer_timeout"]
 [connection signal="timeout" from="Player/Moon/Final" to="Player/Moon" method="_on_Final_timeout"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
@@ -384,10 +530,17 @@ __meta__ = {
 [connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker3" to="Breaker3" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker3" to="Player" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Breaker4" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker4" to="Breaker4" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker4" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Tutorial2" to="Tutorial2" method="_on_Tutorial2_body_entered"]
+[connection signal="body_entered" from="CTut1" to="CTut1" method="_on_Tutorial2_body_entered"]
+[connection signal="body_entered" from="CTut2" to="CTut2" method="_on_Tutorial2_body_entered"]
+[connection signal="body_entered" from="CTut3" to="CTut3" method="_on_Tutorial2_body_entered"]
+[connection signal="body_entered" from="Tutorial" to="Tutorial" method="_on_Tutorial_body_entered"]
+[connection signal="body_exited" from="Tutorial" to="Tutorial" method="_on_Tutorial_body_exited"]
+[connection signal="timeout" from="Tutorial/Timer" to="Tutorial" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Death Plane" to="Player" method="_on_Death_Plane_body_entered"]
-[connection signal="body_entered" from="Death Plane2" to="Player" method="_on_Death_Plane2_body_entered"]
 [connection signal="body_entered" from="Death Plane2" to="Player" method="_on_Death_Plane_body_entered"]
-[connection signal="timeout" from="Title/TitleTimer" to="Title" method="_on_TitleTimer_timeout"]
+[connection signal="body_entered" from="Death Plane2" to="Player" method="_on_Death_Plane2_body_entered"]
 [connection signal="timeout" from="Title/TitleTimer" to="Player/Moon" method="_on_TitleTimer_timeout"]
+[connection signal="timeout" from="Title/TitleTimer" to="Title" method="_on_TitleTimer_timeout"]

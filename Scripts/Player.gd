@@ -60,6 +60,8 @@ func _ready():
 	if not get_tree().get_current_scene().get_name() == "Sea":
 		$LoadPlayer.play()
 func get_input(delta):
+	if hp<0:
+		hp=0
 	#Initial Velocity
 	velocity.x = 0
 	#Setting Ground state after returning from Air

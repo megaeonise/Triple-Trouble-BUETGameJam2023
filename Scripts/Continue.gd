@@ -28,4 +28,4 @@ func _on_PopupMenu2_id_pressed(id):
 		9:
 			get_tree().change_scene("res://Scenes/Levels/Sea.tscn")
 		10:
-			get_tree().change_scene("res://Scenes/Levels/Credits.tscn")
+			get_tree().change_scene("res://Scenes/Credits.tscn")

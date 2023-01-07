@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/boc.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Title.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Assets/moondistortion.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/RainbowStars.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Assets/Sound/DistortionPlayer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/spaceback.png" type="Texture" id=12]
 [ext_resource path="res://Assets/citygud.png" type="Texture" id=15]
 [ext_resource path="res://Scripts/Goal6.gd" type="Script" id=16]
@@ -138,12 +139,15 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 48, 530 )
+
+[node name="DistortionPlayer" parent="." instance=ExtResource( 11 )]
+autoplay = true
 [connection signal="body_entered" from="Tutorial2" to="Tutorial2" method="_on_Tutorial_body_entered"]
 [connection signal="body_exited" from="Tutorial2" to="Tutorial2" method="_on_Tutorial_body_exited"]
 [connection signal="timeout" from="Tutorial2/Timer" to="Tutorial2" method="_on_Timer_timeout"]
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
-[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="timeout" from="Title/Timer" to="Title" method="_on_Timer_timeout"]
 [connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]
 [connection signal="Direction" from="Player" to="Grass" method="_on_Player_Direction"]
