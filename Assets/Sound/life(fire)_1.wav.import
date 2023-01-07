@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/life(fire)_1.wav-e4150d44cc61a5b9d1fe88be46187207.sample"
+
+[deps]
+
+source_file="res://Assets/Sound/life(fire)_1.wav"
+dest_files=[ "res://.import/life(fire)_1.wav-e4150d44cc61a5b9d1fe88be46187207.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

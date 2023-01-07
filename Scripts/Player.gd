@@ -22,6 +22,8 @@ var super_jump: bool = false
 var lava: bool = false
 var super_jump_ready: bool = false
 var dedsfx: bool = false
+var jumpsfx: bool = false
+var dashsfx: bool = false
 #Signals
 signal Dead
 signal Ground
@@ -79,6 +81,9 @@ func get_input(delta):
 		#Moving
 		#Jump
 		if Input.is_action_just_pressed("jump") and state == states[0]:
+			if not jumpsfx:
+				jumpsfx = true
+				$JumpPlayer.play()
 			if super_jump:
 				state = states[1]
 				velocity.y+=jumpspeed*2.5
@@ -136,6 +141,8 @@ func get_input(delta):
 					emit_signal("Stop")
 		#Right Dash
 		if Input.is_action_just_pressed("dash") and Input.is_action_pressed('move_right'):
+			if not dashsfx:
+				$DashPlayer.play()
 			#Right Ground Dash
 			if state == states[0]:
 				emit_signal('Right_Dash')
@@ -148,8 +155,12 @@ func get_input(delta):
 				velocity.x += 5000
 		
 		#Left Dash
+		
 		if Input.is_action_just_pressed("dash") and Input.is_action_pressed('move_left'):
 			#Left Ground Dash
+			if not dashsfx:
+				dashsfx = true
+				$DashPlayer.play()
 			if state == states[0]:
 				emit_signal('Left_Dash')
 				velocity.x -= 5000
@@ -232,6 +243,7 @@ func _physics_process(delta):
 	if floor_block == 7:
 		if hp!=maxhp:
 			hp+=1
+			$HealedPlayer.play()
 			$Healed.set_emitting(true)
 			emit_signal("Healed")
 		speed = 500
@@ -316,6 +328,7 @@ func _on_Coyote_timeout():
 func _on_Fire_body_entered(body):
 	if hp!=maxhp:
 		hp+=1
+		$HealedPlayer.play()
 		$Healed.set_emitting(true)
 		emit_signal("Healed")
 
@@ -380,3 +393,11 @@ func _on_Des_Time5L_timeout():
 
 func _on_DeathPlayer_finished():
 	$DeathPlayer.stop()
+
+
+func _on_JumpPlayer_finished():
+	jumpsfx = false
+
+
+func _on_DashPlayer_finished():
+	dashsfx = false
