@@ -7,7 +7,9 @@ var diag_block:int
 var direction: bool
 var player: Vector2
 var local: Vector2
+var cannon_number: int = 0
 signal blocks(f_block, w_block)
+signal cannon_fired(cannon_number)
 
 func _on_Player_Block(x, y):
 	player.x = x
@@ -71,6 +73,10 @@ func _on_Player_Interact(breaker):
 						set_cell(local.x-1, local.y, 18)
 					18:
 						set_cell(local.x-1, local.y, 17)
+					19:
+						set_cell(local.x-1, local.y, 20)
+						emit_signal("cannon_fired", cannon_number)
+						cannon_number+=1
 			else:
 				match wall_block:
 					0:
@@ -97,6 +103,10 @@ func _on_Player_Interact(breaker):
 						set_cell(local.x+1, local.y, 18)
 					18:
 						set_cell(local.x+1, local.y, 17)
+					19:
+						set_cell(local.x+1, local.y, 20)
+						emit_signal("cannon_fired", cannon_number)
+						cannon_number+=1
 		elif diag_block!=-1:
 			if direction:
 				match diag_block:

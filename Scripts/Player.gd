@@ -35,6 +35,7 @@ var t_x: int = 0
 var t_y: int = 0
 var t_j: int = 0
 var t_s: int = 0
+var reset: bool = false
 #Signals
 signal Dead
 signal Ground
@@ -253,6 +254,7 @@ func _physics_process(delta):
 		emit_signal('Dead')
 	if Input.is_action_just_pressed("die"):
 		hp = 0
+		reset = true
 	#Damage
 	if (floor_block == 0 or floor_block == 16) and invincibility == false and hp>0:
 		hp-=1
@@ -261,8 +263,16 @@ func _physics_process(delta):
 		$Timer.start()
 		emit_signal('Hurt')
 	if finished == true and hp==0:
-		hp = 5
-		get_tree().reload_current_scene()
+		if not reset:
+			hp = 5
+			if not get_tree().get_current_scene().get_name() == "Sea":
+				get_tree().reload_current_scene()
+			else:
+				position = Vector2(504, 272)
+		else:
+			hp = 5
+			reset = false
+			get_tree().reload_current_scene()
 	#Bounce
 	if (floor_block == 10 or floor_block == 18) and timer==false:
 		timer=true
@@ -515,3 +525,7 @@ func _on_ProjectileArea_shot():
 		emit_signal('Moonhurt')
 		velocity.y += jumpspeed*0.5
 		velocity.x = speed/speed
+
+
+func _on_Death_Plane2_body_entered(body):
+	hp=0

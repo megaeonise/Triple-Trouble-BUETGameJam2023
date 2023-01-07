@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/blinkstar1.png" type="Texture" id=1]
+
+[node name="SuperStars" type="CPUParticles2D"]
+position = Vector2( 456, 72 )
+amount = 800
+speed_scale = 0.05
+texture = ExtResource( 1 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1000, 1000 )
+gravity = Vector2( 0, 0 )
+hue_variation = 1.0
+hue_variation_random = 1.0
