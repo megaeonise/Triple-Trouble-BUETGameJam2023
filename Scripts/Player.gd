@@ -29,6 +29,7 @@ var ice: bool = true
 var moon: bool = true
 var dirt: bool = true
 var grass: bool = true
+var can_sound: bool = false
 var t_grav: int = 0
 var t_x: int = 0
 var t_y: int = 0
@@ -51,9 +52,11 @@ signal Hurt
 signal Healed
 signal Crystal
 signal Lava
+signal Moonhurt
 #Controls
 func _ready():
-	$LoadPlayer.play()
+	if not get_tree().get_current_scene().get_name() == "Sea":
+		$LoadPlayer.play()
 func get_input(delta):
 	#Initial Velocity
 	velocity.x = 0
@@ -97,7 +100,7 @@ func get_input(delta):
 		#Moving
 		#Jump
 		if Input.is_action_just_pressed("jump") and state == states[0]:
-			if not jumpsfx:
+			if not jumpsfx and can_sound:
 				jumpsfx = true
 				$JumpPlayer.play()
 			if super_jump:
@@ -157,7 +160,7 @@ func get_input(delta):
 					emit_signal("Stop")
 		#Right Dash
 		if Input.is_action_just_pressed("dash") and Input.is_action_pressed('move_right'):
-			if not dashsfx:
+			if not dashsfx and can_sound:
 				$DashPlayer.play()
 			#Right Ground Dash
 			if state == states[0]:
@@ -174,7 +177,7 @@ func get_input(delta):
 		
 		if Input.is_action_just_pressed("dash") and Input.is_action_pressed('move_left'):
 			#Left Ground Dash
-			if not dashsfx:
+			if not dashsfx and can_sound:
 				dashsfx = true
 				$DashPlayer.play()
 			if state == states[0]:
@@ -187,7 +190,8 @@ func get_input(delta):
 				velocity.x -= 5000
 		#Interact
 		if Input.is_action_just_pressed("interact"):
-			$InteractPlayer.play()
+			if can_sound:
+				$InteractPlayer.play()
 			finished = false
 			state = states[3]
 			emit_signal('Interact', false)
@@ -204,7 +208,8 @@ func get_input(delta):
 			jumpspeed = 0
 			finished = false
 			state = states[3]
-			$DestroyPlayer.play()
+			if can_sound:
+				$DestroyPlayer.play()
 			emit_signal('Interact', breaker)
 			breaker -= 1
 			$CPUParticles2D.set_emitting(false)
@@ -227,7 +232,6 @@ func get_input(delta):
 	
 #Driver code
 func _physics_process(delta):
-	print(speed,' ' ,floor_block)
 	get_input(delta)
 	#Powered-Up
 	if breaker>0:
@@ -241,7 +245,8 @@ func _physics_process(delta):
 		state=states[4]
 		if not dedsfx:
 			dedsfx = true
-			$DeathPlayer.play()
+			if can_sound:
+				$DeathPlayer.play()
 		emit_signal('Dead')
 	if Input.is_action_just_pressed("die"):
 		hp = 0
@@ -260,20 +265,23 @@ func _physics_process(delta):
 		timer=true
 		$Timer.start()
 		velocity.y -= 500
-		$WaterPlayer.play()
+		if can_sound:
+			$WaterPlayer.play()
 		$Water.set_emitting(true)
 	#Icestick
 	if floor_block == 3 or floor_block == 17:
 		speed = 100
 		if not ice:
 			ice = true
-			$IcePlayer.play()
+			if can_sound:
+				$IcePlayer.play()
 	#Lava
 	elif (floor_block == 7 or floor_block == 14):
 		if hp!=maxhp:
-			$LavaPlayer.play()
+			if can_sound:
+				$LavaPlayer.play()
+				$HealedPlayer.play()
 			hp+=1
-			$HealedPlayer.play()
 			$Healed.set_emitting(true)
 			emit_signal("Healed")
 		speed = 500
@@ -294,7 +302,8 @@ func _physics_process(delta):
 				invincibility = true
 				$Timer.start()
 		if not super_jump_ready:
-			$CrystalPlayer.play()
+			if can_sound:
+				$CrystalPlayer.play()
 			super_jump = true
 			super_jump_ready = true
 			$CrystalTimer.start()
@@ -307,16 +316,19 @@ func _physics_process(delta):
 	if floor_block in [6,9,15]:
 		if not moon:
 			moon = true
-			$MoonRPlayer.play()
+			if can_sound:
+				$MoonRPlayer.play()
 	#Dirt
 	if floor_block in [12,5,4]:
 		if not dirt:
 			dirt = true
-			$DirtPlayer.play()
+			if can_sound:
+				$DirtPlayer.play()
 	if floor_block in [0,1,13,16]:
 		if not grass:
 			grass= true
-			$GrassPlayer.play()
+			if can_sound:
+				$GrassPlayer.play()
 	#Math
 	emit_signal("Block", position.x, position.y)
 	emit_signal('Direction', facing)
@@ -339,7 +351,8 @@ func _on_DarkMatter_body_entered(body):
 
 #Powering up
 func _on_Breaker_body_entered(body):
-	$RubyPlayer.play()
+	if can_sound:
+		$RubyPlayer.play()
 	breaker += 1
 	can_emit = true
 	$Timer2.start()
@@ -374,7 +387,8 @@ func _on_Coyote_timeout():
 func _on_Fire_body_entered(body):
 	if hp!=maxhp:
 		hp+=1
-		$HealedPlayer.play()
+		if can_sound:
+			$HealedPlayer.play()
 		$Healed.set_emitting(true)
 		emit_signal("Healed")
 
@@ -482,3 +496,19 @@ func _on_Des_Time6L_timeout():
 
 func _on_InteractPlayer_finished():
 	intsfx = false
+
+
+func _on_Start_timeout():
+	can_sound = true
+
+
+func _on_ProjectileArea_shot():
+	if not invincibility:
+		$Timer.start()
+		invincibility = true
+		hp-=1
+		$Hurt.set_emitting(true)
+		emit_signal('Hurt')
+		emit_signal('Moonhurt')
+		velocity.y += jumpspeed*4
+		velocity.x = speed/speed

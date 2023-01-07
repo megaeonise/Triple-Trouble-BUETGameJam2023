@@ -138,12 +138,12 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 48, 528 )
+position = Vector2( 56, 528 )
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
 [connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker3" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker3" to="Breaker3" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Fire" to="Player" method="_on_Fire_body_entered"]

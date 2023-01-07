@@ -4,5 +4,6 @@ func _ready():
 	$Particle.set_emitting(true)
 
 
-func _on_Timer_timeout():
+
+func _on_TitleTimer_timeout():
 	self.set_visible(false)

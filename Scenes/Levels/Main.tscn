@@ -26,24 +26,35 @@ position = Vector2( 208, 160 )
 script = SubResource( 1 )
 
 [node name="Breaker" parent="." instance=ExtResource( 5 )]
-position = Vector2( 552, 152 )
+position = Vector2( 480, 160 )
 
 [node name="Breaker2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 600, 152 )
 
 [node name="Breaker3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 496, 152 )
+position = Vector2( 544, 152 )
 
 [node name="Goal" parent="." instance=ExtResource( 6 )]
 position = Vector2( 616, 288 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = -152.0
+margin_right = 152.0
+margin_bottom = 112.0
+bbcode_enabled = true
+bbcode_text = "[color=blue]blue[/color]"
+text = "blue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
 [connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]
 [connection signal="Direction" from="Player" to="Grass" method="_on_Player_Direction"]
 [connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]
 [connection signal="area_entered" from="DarkMatter" to="Player" method="_on_DarkMatter_area_entered"]
 [connection signal="body_entered" from="DarkMatter" to="Player" method="_on_DarkMatter_body_entered"]
-[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker3" to="Breaker3" method="_on_Breaker_body_entered"]
