@@ -53,6 +53,7 @@ signal Healed
 signal Crystal
 signal Lava
 signal Moonhurt
+signal ID(id)
 #Controls
 func _ready():
 	if not get_tree().get_current_scene().get_name() == "Sea":
@@ -232,6 +233,8 @@ func get_input(delta):
 	
 #Driver code
 func _physics_process(delta):
+	var id = self.get_instance_id()
+	emit_signal('ID', id)
 	get_input(delta)
 	#Powered-Up
 	if breaker>0:
@@ -510,5 +513,5 @@ func _on_ProjectileArea_shot():
 		$Hurt.set_emitting(true)
 		emit_signal('Hurt')
 		emit_signal('Moonhurt')
-		velocity.y += jumpspeed*4
+		velocity.y += jumpspeed*0.5
 		velocity.x = speed/speed

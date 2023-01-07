@@ -5,5 +5,9 @@ func _ready():
 
 
 
+func _on_Timer_timeout():
+	self.set_visible(false)
+
+
 func _on_TitleTimer_timeout():
 	self.set_visible(false)

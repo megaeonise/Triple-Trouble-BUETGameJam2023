@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Scenes/boc.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Font.tres" type="DynamicFont" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://Assets/moon_ph2.png" type="Texture" id=20]
 [ext_resource path="res://Assets/moon_ph2-sheet.png" type="Texture" id=21]
 [ext_resource path="res://Assets/moon_over.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Sound/laugh.wav" type="AudioStream" id=23]
+[ext_resource path="res://Assets/Sound/laugh2.wav" type="AudioStream" id=24]
 [ext_resource path="res://Assets/blinkstar1.png" type="Texture" id=36]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -36,22 +38,22 @@ region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
-atlas = ExtResource( 22 )
-region = Rect2( 32, 0, 32, 32 )
+atlas = ExtResource( 19 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
-atlas = ExtResource( 19 )
+atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
-atlas = ExtResource( 20 )
+atlas = ExtResource( 22 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
-atlas = ExtResource( 20 )
+atlas = ExtResource( 22 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
@@ -61,18 +63,18 @@ region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
-atlas = ExtResource( 22 )
+atlas = ExtResource( 17 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
-atlas = ExtResource( 14 )
+atlas = ExtResource( 20 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
-atlas = ExtResource( 17 )
-region = Rect2( 0, 0, 32, 32 )
+atlas = ExtResource( 20 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
@@ -91,34 +93,34 @@ animations = [ {
 "name": "1FStatic",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 2 ), SubResource( 3 ) ],
-"loop": true,
-"name": "3 Flame",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 4 ) ],
-"loop": true,
-"name": "2FStatic",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ), SubResource( 6 ) ],
-"loop": true,
-"name": "1 Flame",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ) ],
-"loop": true,
-"name": "NFStatic",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 8 ) ],
+"frames": [ SubResource( 2 ) ],
 "loop": true,
 "name": "3FStatic",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "2FStatic",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "NFStatic",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "3 Flame",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "No Flame",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "1 Flame",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 11 ), SubResource( 12 ) ],
@@ -167,6 +169,10 @@ position = Vector2( 448, 568 )
 [node name="RainbowStars4" parent="." instance=ExtResource( 10 )]
 position = Vector2( 448, 56 )
 
+[node name="Grass" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1, 0 )
+tile_data = PoolIntArray( -1572811, 4, 0, -1572810, 4, 0, -1572809, 4, 0, -1572808, 4, 0, -1572807, 4, 0, -1572806, 4, 0, -1572805, 4, 0, -1572804, 4, 0, -1572803, 4, 0, -1572802, 4, 0, -1572801, 4, 0, -1572800, 4, 0, -1572799, 4, 0, -1572798, 4, 0, -1572797, 4, 0, -1572796, 4, 0, -1572795, 4, 0, -1572794, 4, 0, -1572793, 4, 0, -1572792, 4, 0, -1572791, 4, 0, -1572790, 4, 0, -1572789, 4, 0, -1572788, 4, 0, -1572787, 4, 0, -1572786, 4, 0, -1572785, 4, 0, -1572784, 4, 0, -1572783, 4, 0, -1572782, 4, 0, -1572781, 4, 0, -1572780, 4, 0, -1572779, 4, 0, -1572778, 4, 0, -1572777, 4, 0, -1572776, 4, 0, -1572775, 4, 0, -1507275, 4, 0, -1507239, 4, 0, -1441739, 4, 0, -1441703, 4, 0, -1376203, 4, 0, -1376167, 4, 0, -1310667, 4, 0, -1310631, 4, 0, -1245131, 4, 0, -1245095, 4, 0, -1179595, 4, 0, -1179559, 4, 0, -1114059, 4, 0, -1114023, 4, 0, -1048523, 4, 0, -1048487, 4, 0, -982987, 4, 0, -982951, 4, 0, -917451, 4, 0, -917415, 4, 0, -851915, 4, 0, -851879, 4, 0, -786379, 4, 0, -786343, 4, 0, -720843, 4, 0, -720807, 4, 0, -655307, 4, 0, -655271, 4, 0, -589771, 4, 0, -589735, 4, 0, -524235, 4, 0, -524199, 4, 0, -458699, 4, 0, -458663, 4, 0, -393163, 4, 0, -393127, 4, 0, -327627, 4, 0, -327591, 4, 0, -262091, 4, 0, -262055, 4, 0, -196555, 4, 0, -196519, 4, 0, -131019, 4, 0, -130983, 4, 0, -65483, 4, 0, -65447, 4, 0, 53, 4, 0, 89, 4, 0, 65586, 12, 0, 65587, 12, 0, 65588, 12, 0, 65589, 4, 0, 65625, 4, 0, 131086, 15, 0, 131087, 13, 0, 131088, 13, 0, 131089, 15, 0, 131125, 4, 0, 131161, 4, 0, 196661, 4, 0, 196697, 4, 0, 262197, 4, 0, 262211, 7, 0, 262212, 7, 0, 262213, 7, 0, 262214, 7, 0, 262215, 17, 0, 262233, 4, 0, 327694, 15, 0, 327695, 15, 0, 327696, 15, 0, 327697, 15, 0, 327733, 4, 0, 327769, 4, 0, 393269, 4, 0, 393270, 4, 0, 393271, 4, 0, 393305, 4, 0, 458803, 12, 0, 458804, 12, 0, 458805, 4, 0, 458806, 4, 0, 458807, 4, 0, 458808, 4, 0, 458814, 18, 0, 458841, 4, 0, 524294, 15, 0, 524295, 15, 0, 524312, 13, 0, 524313, 13, 0, 524314, 17, 0, 524325, 13, 0, 524341, 4, 0, 524342, 4, 0, 524343, 4, 0, 524344, 4, 0, 524377, 4, 0, 589838, 14, 0, 589839, 14, 0, 589840, 14, 0, 589841, 14, 0, 589877, 4, 0, 589878, 4, 0, 589879, 4, 0, 589880, 4, 0, 589881, 3, 0, 589913, 4, 0, 655417, 4, 0, 655418, 3, 0, 655449, 4, 0, 720940, 11, 0, 720941, 15, 0, 720954, 4, 0, 720955, 3, 0, 720985, 4, 0, 786491, 4, 0, 786492, 3, 0, 786521, 4, 0, 852028, 4, 0, 852029, 3, 0, 852057, 4, 0, 917565, 4, 0, 917566, 3, 0, 917593, 4, 0, 983102, 4, 0, 983103, 3, 0, 983129, 4, 0, 1048639, 4, 0, 1048640, 3, 0, 1048665, 4, 0, 1114176, 4, 0, 1114177, 3, 0, 1114201, 4, 0, 1179713, 4, 0, 1179714, 3, 0, 1179737, 4, 0, 1245195, 9, 0, 1245196, 9, 0, 1245197, 9, 0, 1245198, 9, 0, 1245199, 9, 0, 1245200, 9, 0, 1245201, 9, 0, 1245202, 9, 0, 1245250, 4, 0, 1245251, 3, 0, 1245273, 4, 0, 1310787, 4, 0, 1310788, 3, 0, 1310809, 4, 0, 1376324, 4, 0, 1376325, 3, 0, 1376345, 4, 0, 1441861, 4, 0, 1441862, 3, 0, 1441881, 4, 0, 1507398, 4, 0, 1507399, 3, 0, 1507417, 4, 0, 1572935, 4, 0, 1572936, 3, 0, 1572953, 4, 0, 1638472, 4, 0, 1638473, 3, 0, 1638489, 4, 0, 1704009, 4, 0, 1704010, 3, 0, 1704025, 4, 0, 1769546, 4, 0, 1769547, 3, 0, 1769561, 4, 0, 1835083, 4, 0, 1835084, 3, 0, 1835097, 4, 0, 1900620, 4, 0, 1900621, 3, 0, 1900633, 4, 0, 1966157, 4, 0, 1966158, 3, 0, 1966169, 4, 0, 2031694, 4, 0, 2031695, 17, 0, 2031696, 17, 0, 2031697, 17, 0, 2031698, 17, 0, 2031699, 17, 0, 2031700, 17, 0, 2031701, 17, 0, 2031702, 17, 0, 2031703, 17, 0, 2031704, 17, 0, 2031705, 4, 0 )
+
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 512, 280 )
 
@@ -183,21 +189,25 @@ animation = "NFStatic"
 script = ExtResource( 7 )
 
 [node name="ProjectileArea" type="KinematicBody2D" parent="Player/Moon"]
+position = Vector2( 0, 16 )
 script = ExtResource( 3 )
 
 [node name="Projectile" type="CPUParticles2D" parent="Player/Moon/ProjectileArea"]
+position = Vector2( -3.05176e-05, 0 )
+emitting = false
 amount = 1
-lifetime = 3.0
+lifetime = 0.01
 speed_scale = 0.75
 gravity = Vector2( 0, 0 )
 scale_amount = 5.0
 color = Color( 0.686275, 0, 1, 1 )
 
 [node name="ProjectileCollision" type="CollisionShape2D" parent="Player/Moon/ProjectileArea"]
+position = Vector2( -3.05176e-05, 0 )
 shape = SubResource( 14 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Player/Moon"]
-position = Vector2( 0, -1.45453 )
+position = Vector2( 0, 1.77778 )
 scale = Vector2( 3.75, 3.77273 )
 emitting = false
 amount = 50
@@ -216,9 +226,9 @@ hue_variation_random = 1.0
 script = ExtResource( 8 )
 
 [node name="MoonTimer" type="Timer" parent="Player/Moon"]
-wait_time = 20.0
+wait_time = 10.0
 __meta__ = {
-"_editor_description_": "its for testing change to 20 bec every 20 sec he attack"
+"_editor_description_": "its for testing change to 20 bec every 20 sec he attack nvm change to 5"
 }
 
 [node name="ProjectileTimer" type="Timer" parent="Player/Moon"]
@@ -228,9 +238,21 @@ __meta__ = {
 "_editor_description_": "should be 2"
 }
 
-[node name="Grass" parent="." instance=ExtResource( 5 )]
-position = Vector2( -1, 0 )
-tile_data = PoolIntArray( 393231, 12, 0, 393232, 12, 0, 589838, 12, 0, 589839, 12, 0, 589840, 12, 0, 1245195, 9, 0, 1245196, 9, 0, 1245197, 9, 0, 1245198, 9, 0, 1245199, 9, 0, 1245200, 9, 0, 1245201, 9, 0, 1245202, 9, 0 )
+[node name="Taunt" type="CPUParticles2D" parent="Player/Moon"]
+position = Vector2( 0, 1.77778 )
+emitting = false
+amount = 10
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector2( 0, -50 )
+color = Color( 0.686275, 0, 1, 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/Moon"]
+stream = ExtResource( 23 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Player/Moon"]
+stream = ExtResource( 24 )
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
 tile_data = PoolIntArray(  )
@@ -239,13 +261,13 @@ tile_data = PoolIntArray(  )
 tile_data = PoolIntArray( 9, 7, 0, 131095, 7, 0, 327692, 7, 0, 393238, 7, 0, 524306, 7, 0, 589828, 7, 0, 786452, 7, 0, 983051, 7, 0 )
 
 [node name="Breaker" parent="." instance=ExtResource( 6 )]
-position = Vector2( 48, 192 )
+position = Vector2( 2304, 28 )
 
 [node name="Breaker2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 508, 136 )
+position = Vector2( 1600, 208 )
 
 [node name="Breaker3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 976, 240 )
+position = Vector2( 2640, -160 )
 
 [node name="Fire" parent="." instance=ExtResource( 13 )]
 position = Vector2( 16, 552 )
@@ -274,7 +296,12 @@ hue_variation = 1.0
 hue_variation_random = 1.0
 
 [node name="TitleTimer" type="Timer" parent="Title"]
+wait_time = 3.0
+one_shot = true
 autostart = true
+__meta__ = {
+"_editor_description_": "3"
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Title"]
 light_mask = -2147483647
@@ -296,20 +323,26 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
+[connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
 [connection signal="Block" from="Player" to="Grass" method="_on_Player_Block"]
 [connection signal="Direction" from="Player" to="Grass" method="_on_Player_Direction"]
+[connection signal="ID" from="Player" to="Player/Moon/ProjectileArea" method="_on_Player_ID"]
 [connection signal="Interact" from="Player" to="Grass" method="_on_Player_Interact"]
+[connection signal="Moonhurt" from="Player" to="Player/Moon" method="_on_Player_Moonhurt"]
+[connection signal="restart" from="Player/Moon/ProjectileArea" to="Player/Moon" method="_on_ProjectileArea_restart"]
+[connection signal="shot" from="Player/Moon/ProjectileArea" to="Player/Moon" method="_on_ProjectileArea_shot"]
 [connection signal="shot" from="Player/Moon/ProjectileArea" to="Player" method="_on_ProjectileArea_shot"]
+[connection signal="turn_off" from="Player/Moon/ProjectileArea" to="Player/Moon" method="_on_ProjectileArea_turn_off"]
 [connection signal="timeout" from="Player/Moon/MoonTimer" to="Player/Moon" method="_on_MoonTimer_timeout"]
 [connection signal="timeout" from="Player/Moon/MoonTimer" to="Player/Moon/CPUParticles2D" method="_on_MoonTimer_timeout"]
+[connection signal="timeout" from="Player/Moon/ProjectileTimer" to="Player/Moon" method="_on_ProjectileTimer_timeout"]
 [connection signal="timeout" from="Player/Moon/ProjectileTimer" to="Player/Moon/ProjectileArea" method="_on_ProjectileTimer_timeout"]
-[connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Breaker3" to="Breaker3" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker3" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker3" to="Breaker3" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Fire" to="Player" method="_on_Fire_body_entered"]
 [connection signal="body_entered" from="Death Plane" to="Player" method="_on_Death_Plane_body_entered"]
 [connection signal="timeout" from="Title/TitleTimer" to="Player/Moon" method="_on_TitleTimer_timeout"]
