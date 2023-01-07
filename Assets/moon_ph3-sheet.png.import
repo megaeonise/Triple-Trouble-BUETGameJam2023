@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moon_ph3-sheet.png-ab1e9debbe42cae2d98f8d3eaa2861df.stex"
+path="res://.import/moon_ph3-sheet.png-a47cff0371b6c008bc5e48f62f640848.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Fonts/moon_ph3-sheet.png"
-dest_files=[ "res://.import/moon_ph3-sheet.png-ab1e9debbe42cae2d98f8d3eaa2861df.stex" ]
+source_file="res://Assets/moon_ph3-sheet.png"
+dest_files=[ "res://.import/moon_ph3-sheet.png-a47cff0371b6c008bc5e48f62f640848.stex" ]
 
 [params]
 

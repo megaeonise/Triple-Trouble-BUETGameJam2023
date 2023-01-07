@@ -12,11 +12,11 @@
 [ext_resource path="res://Scripts/Tutorial-3.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/Tutorial-2.gd" type="Script" id=11]
 [ext_resource path="res://Assets/spaceback.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://Scenes/RainbowStars.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scripts/Goal3.gd" type="Script" id=16]
 [ext_resource path="res://Scripts/Title.gd" type="Script" id=17]
 [ext_resource path="res://Assets/citygud.png" type="Texture" id=18]
-[ext_resource path="res://Assets/Fonts/Big Pixel Light demo.otf" type="DynamicFontData" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 8 )
@@ -26,7 +26,7 @@ size = 32
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 19 )
+font_data = ExtResource( 13 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -197,8 +197,8 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 840, 528 )
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
-[connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Tutorial" to="Tutorial" method="_on_Tutorial_body_entered"]
 [connection signal="body_exited" from="Tutorial" to="Tutorial" method="_on_Tutorial_body_exited"]
 [connection signal="timeout" from="Tutorial/Timer" to="Tutorial" method="_on_Timer_timeout"]

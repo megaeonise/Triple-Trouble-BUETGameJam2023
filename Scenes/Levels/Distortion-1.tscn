@@ -9,10 +9,10 @@
 [ext_resource path="res://Scenes/Miscellaneous.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/moondistortion.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/RainbowStars.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://Assets/spaceback.png" type="Texture" id=12]
 [ext_resource path="res://Assets/citygud.png" type="Texture" id=15]
 [ext_resource path="res://Scripts/Goal6.gd" type="Script" id=16]
-[ext_resource path="res://Assets/Fonts/Big Pixel Light demo.otf" type="DynamicFontData" id=17]
 [ext_resource path="res://Scripts/Tutorial-1.gd" type="Script" id=18]
 [ext_resource path="res://Assets/tree.png" type="Texture" id=19]
 
@@ -24,7 +24,7 @@ size = 32
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 17 )
+font_data = ExtResource( 10 )
 
 [node name="Node2D" type="Node2D"]
 

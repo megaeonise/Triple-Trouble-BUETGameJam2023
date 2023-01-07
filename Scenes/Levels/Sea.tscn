@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Assets/Font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scenes/Levels/MoonProjectile.gd" type="Script" id=3]
@@ -11,7 +11,6 @@
 [ext_resource path="res://Scenes/RainbowStars.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/SuperStars.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/spaceback.png" type="Texture" id=12]
-[ext_resource path="res://Scenes/Fire.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Assets/moon ph1.png" type="Texture" id=14]
 [ext_resource path="res://Assets/citygud.png" type="Texture" id=15]
 [ext_resource path="res://Scripts/Title.gd" type="Script" id=16]
@@ -302,9 +301,6 @@ position = Vector2( 2616, -104 )
 [node name="Breaker4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2792, 88 )
 
-[node name="Fire" parent="." instance=ExtResource( 13 )]
-position = Vector2( 16, 552 )
-
 [node name="Death Plane" type="Area2D" parent="."]
 position = Vector2( 512, 720 )
 
@@ -382,17 +378,16 @@ __meta__ = {
 [connection signal="timeout" from="Player/Moon/ProjectileTimer" to="Player/Moon/ProjectileArea" method="_on_ProjectileTimer_timeout"]
 [connection signal="timeout" from="Player/Moon/ProjectileTimer" to="Player/Moon" method="_on_ProjectileTimer_timeout"]
 [connection signal="timeout" from="Player/Moon/Final" to="Player/Moon" method="_on_Final_timeout"]
-[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker3" to="Breaker3" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker3" to="Player" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Breaker4" to="Breaker4" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker4" to="Player" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Fire" to="Player" method="_on_Fire_body_entered"]
+[connection signal="body_entered" from="Breaker4" to="Breaker4" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Death Plane" to="Player" method="_on_Death_Plane_body_entered"]
 [connection signal="body_entered" from="Death Plane2" to="Player" method="_on_Death_Plane2_body_entered"]
 [connection signal="body_entered" from="Death Plane2" to="Player" method="_on_Death_Plane_body_entered"]
-[connection signal="timeout" from="Title/TitleTimer" to="Player/Moon" method="_on_TitleTimer_timeout"]
 [connection signal="timeout" from="Title/TitleTimer" to="Title" method="_on_TitleTimer_timeout"]
+[connection signal="timeout" from="Title/TitleTimer" to="Player/Moon" method="_on_TitleTimer_timeout"]

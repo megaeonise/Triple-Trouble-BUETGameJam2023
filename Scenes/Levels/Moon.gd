@@ -1,6 +1,6 @@
 extends AnimatedSprite
 onready var _anim = self
-var phase: int = 0
+var phase: int = 3
 
 func _on_TitleTimer_timeout():
 	$MoonTimer.start()
