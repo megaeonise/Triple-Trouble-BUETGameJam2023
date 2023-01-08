@@ -19,6 +19,8 @@ config/name="Buet Game Jam 2023"
 run/main_scene="res://Scenes/Main Menu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Moonfire"
+boot_splash/image="res://Assets/Splash.png"
+boot_splash/use_filter=false
 config/icon="res://Assets/moon ph1.png"
 
 [display]
