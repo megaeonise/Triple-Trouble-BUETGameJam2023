@@ -10,37 +10,37 @@
 [node name="TouchControls" type="CanvasLayer"]
 
 [node name="Right" type="TouchScreenButton" parent="."]
-position = Vector2( 56, 536 )
-scale = Vector2( 2.5, 2.5 )
+position = Vector2( 144, 448 )
+scale = Vector2( 5, 5 )
 normal = ExtResource( 2 )
 action = "move_right"
 
 [node name="Left" type="TouchScreenButton" parent="."]
-position = Vector2( -8, 536 )
-scale = Vector2( 2.5, 2.5 )
+position = Vector2( -8, 448 )
+scale = Vector2( 5, 5 )
 normal = ExtResource( 1 )
 action = "move_left"
 
 [node name="Jump" type="TouchScreenButton" parent="."]
-position = Vector2( 856, 456 )
-scale = Vector2( 2.5, 2.5 )
+position = Vector2( 744, 312 )
+scale = Vector2( 5, 5 )
 normal = ExtResource( 4 )
 action = "jump"
 
 [node name="Dash" type="TouchScreenButton" parent="."]
-position = Vector2( 760, 536 )
-scale = Vector2( 2.5, 2.55 )
+position = Vector2( 608, 448 )
+scale = Vector2( 5, 5 )
 normal = ExtResource( 6 )
 action = "dash"
 
 [node name="Interact" type="TouchScreenButton" parent="."]
-position = Vector2( 856, 536 )
-scale = Vector2( 2.5, 2.5 )
+position = Vector2( 744, 448 )
+scale = Vector2( 5, 5 )
 normal = ExtResource( 3 )
 action = "interact"
 
 [node name="Destructor" type="TouchScreenButton" parent="."]
-position = Vector2( 952, 536 )
-scale = Vector2( 2.5, 2.5 )
+position = Vector2( 888, 448 )
+scale = Vector2( 5, 5 )
 normal = ExtResource( 5 )
 action = "destroy"

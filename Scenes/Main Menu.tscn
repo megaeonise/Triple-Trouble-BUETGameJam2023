@@ -48,8 +48,8 @@ margin_left = -800.384
 margin_top = -371.872
 margin_right = -175.68
 margin_bottom = -252.096
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 1, 0.352941, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "
 
@@ -163,6 +163,7 @@ __meta__ = {
 }
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource( 5 )]
+
 [connection signal="pressed" from="Level Select" to="Level Select" method="_on_Continue_pressed"]
 [connection signal="id_pressed" from="Level Select/PopupMenu2" to="Level Select" method="_on_PopupMenu2_id_pressed"]
 [connection signal="pressed" from="Start2" to="Start2" method="_on_Start2_pressed"]
