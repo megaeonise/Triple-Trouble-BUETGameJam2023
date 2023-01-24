@@ -6,7 +6,6 @@
 [ext_resource path="res://Assets/cannon4.png" type="Texture" id=4]
 
 [resource]
-flags = 4
 frames = 4
 frame_0/texture = ExtResource( 2 )
 frame_1/texture = ExtResource( 1 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/boc.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Font.tres" type="DynamicFont" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Assets/Sound/DistortionPlayer.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Assets/citygud.png" type="Texture" id=15]
 [ext_resource path="res://Scripts/Title.gd" type="Script" id=16]
+[ext_resource path="res://Scenes/TouchControls.tscn" type="PackedScene" id=17]
 
 [node name="Node2D" type="Node2D"]
 
@@ -143,13 +144,15 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 56, 528 )
+
+[node name="TouchControls" parent="." instance=ExtResource( 17 )]
 [connection signal="blocks" from="Grass" to="Player" method="_on_Grass_blocks"]
-[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker" to="Breaker" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker2" to="Breaker2" method="_on_Breaker_body_entered"]
-[connection signal="body_entered" from="Breaker3" to="Player" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker2" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Breaker3" to="Breaker3" method="_on_Breaker_body_entered"]
+[connection signal="body_entered" from="Breaker3" to="Player" method="_on_Breaker_body_entered"]
 [connection signal="body_entered" from="Fire" to="Player" method="_on_Fire_body_entered"]
 [connection signal="body_entered" from="Death Plane" to="Player" method="_on_Death_Plane_body_entered"]
 [connection signal="timeout" from="Title/Timer" to="Title" method="_on_Timer_timeout"]
